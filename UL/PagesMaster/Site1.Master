@@ -1,0 +1,67 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="PandemicSuppliesWebApp.UL.PagesMaster.Site1" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <title>Pandemic Supplies</title>
+
+    <%-- icons and fonts --%>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+    <%-- asyncronously load scripts --%>
+    <script type="text/javascript" src="../scripts/scripts.js" async></script>
+
+
+    <%-- css --%>
+    <link type="text/css" href="../css/style.css" rel="stylesheet" />
+    <%--<link type="text/css" href="../css/theme.css" rel="stylesheet" />--%>
+
+    <%-- HEAD CONTENT HERE --%>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <main>
+            <%-- Nav Bar --%>
+            <header>
+                <nav>
+                    <%-- TODO: make notifications bar --%>
+                    <%-- TODO: make navbar collapse into burger bar --%>
+                    <a class="nav-link nav-logo" href="#">Pandemic Supplies</a>
+                    <div class="nav-search-wrapper">
+                        <asp:TextBox ID="tbxSearch" runat="server" CssClass="nav-search"></asp:TextBox>
+                        <asp:LinkButton ID="btnSearch" runat="server" CssClass="nav-search-button">
+                            <span class="material-icons" style="vertical-align: middle;">search</span>
+                        </asp:LinkButton>
+                    </div>
+                    <ul class="nav-link">
+                        <li><a href="../Pages/login.aspx">Login</a></li>
+                        <li><a href="../Pages/orders.aspx">Orders</a></li>
+                        <li>
+                            <asp:LinkButton ID="LinkButton1" runat="server" CssClass="nav-button">
+                                <span class="material-icons valign-middle">shopping_cart</span>
+                                <asp:Label ID="Label1" runat="server" Text="2" CssClass="valign-middle"></asp:Label>
+                            </asp:LinkButton>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+
+            <div class="grid-wrapper">
+                <%-- BODY CONTENT HERE --%>
+                <asp:ContentPlaceHolder ID="body" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+
+            <%-- footers are added with second masterpage --%>
+            <%-- FOOTER CONTENT HERE --%>
+            <asp:ContentPlaceHolder ID="footer" runat="server">
+            </asp:ContentPlaceHolder>
+
+        </main>
+    </form>
+</body>
+</html>

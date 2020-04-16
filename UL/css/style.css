@@ -1,0 +1,148 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --font-family: 'Montserrat', sans-serif;
+    --body-background-color: white;
+    --card-background-color: white;
+    --nav-background-color: #272932;
+    --nav-link-text-color: #FBFBFB;
+    --nav-link-text-hover-color: #0088a9;
+    --nav-button-background-color: rgba(0,136,169,1);
+    --nav-button-background-hover-color: rgba(255,255,255,1);
+    --error-message-color: #f44336;
+    --link-color: #2196f3;
+}
+body {
+    font-family: var(--font-family);
+    background: var(--body-background-color);
+    font-weight: 500;
+    font-size: 16px;
+}
+body a {
+    color: var(--link-color)
+}
+a {
+    text-decoration: none;
+}
+nav {
+    background: var(--nav-background-color);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 10%;
+}
+nav a, li, .nav-button {
+    color: var(--nav-link-text-color);
+}
+.nav-link {
+    list-style: none;
+}
+.nav-link li {
+    display: inline-block;
+    padding: 0px 20px;
+}
+.nav-link li a{
+    transition: all 0.3s ease 0s;
+}
+.nav-link li a:hover {
+    color: var(--nav-link-text-hover-color);
+}
+.nav-logo {
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: auto;
+}
+.nav-button {
+    padding: 9px 25px;
+    background-color: var(--nav-button-background-color);
+    border: 0px solid red;
+    border-radius: 50px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+}
+.nav-button:hover {
+    background-color: var(--nav-button-background-hover-color);
+}
+.nav-search-wrapper {
+
+}
+.nav-search {
+    padding: 5px 5px;
+    border-radius: 4px;
+    border: none;
+    cursor: text;
+    width: 200px;
+}
+.nav-search-button {
+
+}
+.valign-middle {
+    vertical-align: middle;
+}
+.input-wrapper {
+    padding: 1vh;
+    border: 1px solid #b4b4b4;
+    border-radius: 4px;
+}
+.input-field {
+    padding: 1vh;
+    text-align: left;
+}
+.input-label {
+}
+.input-textbox {
+    padding: 5px 5px;
+    border-radius: 4px;
+    border: 1px solid #969696;
+    cursor: text;
+    width: 100%;
+}
+.input-helper_text {
+    position: center;
+    min-height: 18px;
+    display: block;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.54);
+}
+.error-message {
+    color: var(--error-message-color);
+}
+.grid-wrapper {
+    display: grid;
+    width: 80%;
+    margin: 0px auto;
+    /*grid-gap: 20px;*/
+    /*grid-template-columns: 1fr 300px 1fr;*/
+}
+.grid-wrapper-login {
+    display: grid;
+    grid-template-columns: 1fr 350px 1fr;
+    padding: 30px;
+}
+.grid-item {
+    /*background: #58d5d6;*/
+    /*color: white;*/
+    padding: 0;
+}
+.grid-item:nth-child(even) {
+    /*background: #236fc8;*/
+}
+.grid-item-logincard {
+    text-align: center;
+    color: black;
+    background: var(--card-background-color);
+    justify-self: stretch;
+}
+.grid-item-empty {
+}
+.image {
+    width: 1fr;
+    height: 1fr;
+    background-position: center center;
+    background-size: cover;
+}
