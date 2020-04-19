@@ -5,6 +5,23 @@
 }
 :root {
     --font-family: 'Montserrat', sans-serif;
+    --body-background-color: #FFFFF2;
+    --card-background-color: #FFFFF2;
+    --nav-background-color: #2d545e;
+    --nav-link-text-color: #FBFBFB;
+    --nav-link-text-hover-color: #c89666;
+    --nav-button-background-color: #e1b382;
+    --nav-button-background-hover-color: #c89666;
+    --button-background-color: #2d545e;
+    --button-background-color-hover: #2d545e;
+    --error-message-color: #f44336;
+    --link-color: #2196f3;
+    --dropdown-text_color: black;
+    --input_border_color: #c7c5c5;
+}
+/* old theme
+:root {
+    --font-family: 'Montserrat', sans-serif;
     --body-background-color: white;
     --card-background-color: white;
     --nav-background-color: #272932;
@@ -15,55 +32,69 @@
     --error-message-color: #f44336;
     --link-color: #2196f3;
 }
+*/
+html {
+    font-size: 62.5%;   /* using rems for font size: 1rem = 10px */
+}
 body {
     font-family: var(--font-family);
     background: var(--body-background-color);
-    font-weight: 500;
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 body a {
     color: var(--link-color)
 }
+h1 {
+    font-weight: lighter;
+}
 a {
     text-decoration: none;
 }
+/********************* NAV BAR *********************/
 nav {
     background: var(--nav-background-color);
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    padding: 20px 10%;
+    padding: 2rem 10%;
+    /*box-shadow: 0 4px 2px -2px rgba(0,0,0,.2);*/
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    font-size: 2rem;
 }
 nav a, li, .nav-button {
     color: var(--nav-link-text-color);
+    cursor: pointer;
 }
 .nav-link {
     list-style: none;
 }
-.nav-link li {
+.nav-link-list_item {
     display: inline-block;
     padding: 0px 20px;
 }
-.nav-link li a{
+.nav-link-list_item a {
     transition: all 0.3s ease 0s;
 }
-.nav-link li a:hover {
+.nav-link-list_item a:hover {
     color: var(--nav-link-text-hover-color);
+}
+.nav-link-list_item_button {
+    display: inline-block;
+    padding: 0px 20px;
 }
 .nav-logo {
     cursor: pointer;
-    font-size: 20px;
+    font-size: 3rem;
     margin-right: auto;
 }
 .nav-button {
-    padding: 9px 25px;
+    padding: .9rem 2.5rem;
     background-color: var(--nav-button-background-color);
     border: 0px solid red;
-    border-radius: 50px;
+    border-radius: 5rem;
     transition: all 0.3s ease 0s;
     cursor: pointer;
-    font-weight: 500;
-    font-size: 16px;
+    font-size: 1.6rem;
 }
 .nav-button:hover {
     background-color: var(--nav-button-background-hover-color);
@@ -72,21 +103,47 @@ nav a, li, .nav-button {
 
 }
 .nav-search {
-    padding: 5px 5px;
-    border-radius: 4px;
+    padding: .5rem .5rem;
+    border-radius: .4rem;
     border: none;
     cursor: text;
-    width: 200px;
+    width: 20rem;
 }
 .nav-search-button {
 
 }
+/********************* DROPDOWN MENU *********************/
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    /*top: 5rem;*/
+    display: none;
+    position: absolute;
+    background-color: var(--nav-background-color);
+    min-width: 160px;
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.2);
+    border: 1px solid white;
+    z-index: 1;
+    font-size: 1.2rem;
+    color: black;
+    padding: 1.2rem 1.6rem;
+}
+.dropdown-content_link {
+    display: block;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/********************* VERTICAL ALIGN *********************/
 .valign-middle {
     vertical-align: middle;
 }
+/********************* INPUT *********************/
 .input-wrapper {
     padding: 1vh;
-    border: 1px solid #b4b4b4;
+    border: 1px solid var(--input_border_color);
     border-radius: 4px;
 }
 .input-field {
@@ -106,12 +163,28 @@ nav a, li, .nav-button {
     position: center;
     min-height: 18px;
     display: block;
-    font-size: 12px;
+    font-size: 1.2rem;
     color: rgba(0, 0, 0, 0.54);
 }
-.error-message {
+.input-error_message {
     color: var(--error-message-color);
 }
+.input-button {
+    text-decoration: none;
+    color: white;
+    margin: 5rem;
+    padding: 1rem 1.5rem;
+    border: none;
+    font-size: 2rem;
+    border-radius: .5rem;
+    background: var(--button-background-color);
+    box-shadow: 0rem .3rem .2rem -.2rem rgba(0,0,0,.2);
+    transition: all 0.3s ease 0s;
+}
+.input-button:hover {
+    background-color: var(--nav-button-background-hover-color);
+}
+/********************* GRID *********************/
 .grid-wrapper {
     display: grid;
     width: 80%;
@@ -121,7 +194,7 @@ nav a, li, .nav-button {
 }
 .grid-wrapper-login {
     display: grid;
-    grid-template-columns: 1fr 350px 1fr;
+    grid-template-columns: 1fr 40rem 1fr;
     padding: 30px;
 }
 .grid-item {

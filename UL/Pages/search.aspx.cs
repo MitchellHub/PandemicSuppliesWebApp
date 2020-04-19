@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace PandemicSuppliesWebApp.UL.Pages
 {
-    public partial class admin : System.Web.UI.Page
+    public partial class search : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

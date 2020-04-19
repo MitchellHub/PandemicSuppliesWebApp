@@ -1,0 +1,26 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1Admin.master.cs" Inherits="PandemicSuppliesWebApp.UL.Pages.Admin.Site1Admin" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Pandemic Admin Zone</title>
+
+    <%-- css --%>
+    <link type="text/css" href="../../css/style.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <main>
+            <div class="" style="padding: 50px;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </main>
+    </form>
+
+</body>
+</html>

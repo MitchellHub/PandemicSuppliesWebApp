@@ -7,119 +7,146 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PandemicSuppliesWebApp.UL.PagesMaster
+namespace PandemicSuppliesWebApp.UL.Pages.Admin
 {
 
 
-    public partial class Site1
+    public partial class adminAccounts
     {
 
         /// <summary>
-        /// head control.
+        /// lblSearchBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+        protected global::System.Web.UI.WebControls.Label lblSearchBy;
 
         /// <summary>
-        /// form1 control.
+        /// lstSearchBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.DropDownList lstSearchBy;
 
         /// <summary>
-        /// linkLogo control.
+        /// tbxSearchBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink linkLogo;
+        protected global::System.Web.UI.WebControls.TextBox tbxSearchBy;
 
         /// <summary>
-        /// tbxSearch control.
+        /// btnSearchBy control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxSearch;
+        protected global::System.Web.UI.WebControls.Button btnSearchBy;
 
         /// <summary>
-        /// btnSearch control.
+        /// btnDisplayAll control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSearch;
+        protected global::System.Web.UI.WebControls.Button btnDisplayAll;
 
         /// <summary>
-        /// linkAccount control.
+        /// lblAccountsGridViewFeedback control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink linkAccount;
+        protected global::System.Web.UI.WebControls.Label lblAccountsGridViewFeedback;
 
         /// <summary>
-        /// linkDropdownSignOut control.
+        /// gvAccounts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink linkDropdownSignOut;
+        protected global::System.Web.UI.WebControls.GridView gvAccounts;
 
         /// <summary>
-        /// linkOrders control.
+        /// lblUserIDDisplay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink linkOrders;
+        protected global::System.Web.UI.WebControls.Label lblUserIDDisplay;
 
         /// <summary>
-        /// linkCart control.
+        /// lblEmailDisplay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton linkCart;
+        protected global::System.Web.UI.WebControls.Label lblEmailDisplay;
 
         /// <summary>
-        /// Label1 control.
+        /// btnActivate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Button btnActivate;
 
         /// <summary>
-        /// body control.
+        /// btnViewInvoices control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder body;
+        protected global::System.Web.UI.WebControls.Button btnViewInvoices;
 
         /// <summary>
-        /// footer control.
+        /// lblInvoiceGridViewFeedback control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder footer;
+        protected global::System.Web.UI.WebControls.Label lblInvoiceGridViewFeedback;
+
+        /// <summary>
+        /// gvInvoices control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvInvoices;
+
+        /// <summary>
+        /// lblInvoiceProductsGridViewFeedback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblInvoiceProductsGridViewFeedback;
+
+        /// <summary>
+        /// gvInvoiceProducts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvInvoiceProducts;
     }
 }
