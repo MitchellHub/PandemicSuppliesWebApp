@@ -7,20 +7,16 @@ using System.Web.UI.WebControls;
 
 namespace PandemicSuppliesWebApp.UL.Pages
 {
-    public partial class homepage : System.Web.UI.Page
+    public partial class product : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string strUserID = Convert.ToString(Session["user_ID"]);
 
-            if (strUserID == "1")
-            {
+        }
 
-            }
-            else
-            {
-                Response.Redirect("error.aspx");
-            }
+        protected void btnAddToCart_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("addedToCart.aspx");
         }
     }
 }

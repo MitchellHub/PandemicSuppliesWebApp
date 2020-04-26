@@ -13,5 +13,25 @@ namespace PandemicSuppliesWebApp.UL.Pages
         {
 
         }
+
+        protected void btnOrders_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("orders.aspx");
+        }
+
+        protected void btnAccountSettings_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("accountSettings.aspx");
+        }
+
+        protected void btnAddresses_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("accountAddresses.aspx");
+        }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("logout.aspx");
+        }
     }
 }

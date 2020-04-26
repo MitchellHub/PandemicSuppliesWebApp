@@ -25,8 +25,7 @@ namespace PandemicSuppliesWebApp.UL.Pages
             string strAdminAEmail = "admin@email.com";
             string strAdminAPassword = "admin1";
 
-            // getUserID(email, password);
-
+            // correct details for customer account
             if (strEmail == strAEmail && strPassword == strAPassword)
             {
                 Session["User_ID"] = 1;
@@ -34,30 +33,26 @@ namespace PandemicSuppliesWebApp.UL.Pages
                 // login();
                 Response.Redirect("main.aspx");
             }
-            else if ((strEmail == strAEmail && strPassword != strAPassword) || 
-                    (strEmail == strAdminAEmail && strPassword != strAdminAPassword))
-            {
-                lblFeedback.Visible = true;
-                lblFeedback.Text = "Sorry, your password is incorrect";
-            }
+            // correct details for admin account
             else if (strEmail == strAdminAEmail && strPassword == strAdminAPassword)
             {
                 Session["User_ID"] = 2;
                 Session["User_Name"] = "Admin";
                 Response.Redirect("Admin/adminDashboard.aspx");
             }
+            // email correct, password incorrect
+            else if ((strEmail == strAEmail && strPassword != strAPassword) || 
+                    (strEmail == strAdminAEmail && strPassword != strAdminAPassword))
+            {
+                lblFeedback.Visible = true;
+                lblFeedback.Text = "Sorry, your password is incorrect";
+            }
+            // email incorrect
             else
             {
                 lblFeedback.Visible = true;
-                lblFeedback.Text = "Sorry, your username and password combination is incorrect";
+                lblFeedback.Text = "Sorry, the email entered is not registered.";
             }
-        }
-
-        private string getUserID(string strAEmail, string strAPassword)
-        {
-            // query database
-            // return real user id
-            return strAEmail;
         }
     }
 }

@@ -1,8 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UL/PagesMaster/Site1Footer.master" AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="PandemicSuppliesWebApp.UL.Pages.register" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UL/PagesMaster/Site1.master" AutoEventWireup="true" CodeBehind="register.aspx.cs" Inherits="PandemicSuppliesWebApp.UL.Pages.register" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
+    <h1 style="text-align: center; padding-top: 2rem;">
+        <asp:HyperLink ID="linkLogo" runat="server" NavigateUrl="~/UL/Pages/main.aspx" Text="Pandemic Supplies" CssClass="nav-link nav-logo" ForeColor="Black"/>
+    </h1>
     <div class="grid-wrapper-login">
         <div class="grid-item"></div>
         <div class="grid-item grid-item-logincard">
@@ -63,7 +66,7 @@
                 </div>
 
                 <%-- Register Button --%>
-                <asp:LinkButton ID="btnRegister" runat="server" CausesValidation="true" OnClick="btnRegister_Click" CssClass="input-button">Register</asp:LinkButton>
+                <asp:LinkButton ID="btnRegister" runat="server" CausesValidation="true" OnClick="btnRegister_Click" CssClass="button">Register</asp:LinkButton>
                 <br /><br />
                 <span class="input-helper_text">
                         Already got an account?<br />

@@ -70,21 +70,44 @@
     <Content Include="Global.asax" />
     <Content Include="UL\css\style.css" />
     <Content Include="UL\css\theme.css" />
+    <Content Include="UL\IMG\afterpay.jpg" />
+    <Content Include="UL\IMG\bottled_water.jpg" />
+    <Content Include="UL\IMG\hand_sanitizer.jpg" />
+    <Content Include="UL\IMG\logo.png" />
+    <Content Include="UL\IMG\mastercard.png" />
+    <Content Include="UL\IMG\pasta.jpg" />
+    <Content Include="UL\IMG\rice.jpg" />
+    <Content Include="UL\IMG\riot_gas_mask.jpg" />
+    <Content Include="UL\IMG\sale_banner.png" />
+    <Content Include="UL\IMG\visa.jpg" />
     <Content Include="UL\PagesTest\DBTest.aspx" />
     <Content Include="UL\PagesTest\grid_test.aspx" />
+    <Content Include="UL\Pages\about.aspx" />
     <Content Include="UL\Pages\account.aspx" />
+    <Content Include="UL\Pages\accountAddresses.aspx" />
+    <Content Include="UL\Pages\accountSettings.aspx" />
+    <Content Include="UL\Pages\addedToCart.aspx" />
     <Content Include="UL\Pages\Admin\adminAccounts.aspx" />
+    <Content Include="UL\Pages\Admin\adminAddProduct.aspx" />
     <Content Include="UL\Pages\Admin\adminDashboard.aspx" />
     <Content Include="UL\Pages\Admin\adminProducts.aspx" />
+    <Content Include="UL\Pages\contact.aspx" />
+    <Content Include="UL\Pages\policy.aspx" />
     <Content Include="UL\Pages\cart.aspx" />
+    <Content Include="UL\Pages\checkoutAddBillingAddress.aspx" />
+    <Content Include="UL\Pages\checkoutAddDeliveryAddress.aspx" />
+    <Content Include="UL\Pages\checkoutConfirmation.aspx" />
+    <Content Include="UL\Pages\checkoutPayment.aspx" />
     <Content Include="UL\Pages\error.aspx" />
-    <Content Include="UL\Pages\homepage.aspx" />
+    <Content Include="UL\Pages\landing.aspx" />
     <Content Include="UL\Pages\login.aspx" />
     <Content Include="UL\Pages\logOut.aspx" />
     <Content Include="UL\Pages\main.aspx" />
     <Content Include="UL\Pages\orders.aspx" />
+    <Content Include="UL\Pages\product.aspx" />
     <Content Include="UL\Pages\register.aspx" />
     <Content Include="UL\Pages\resetPassword.aspx" />
+    <Content Include="UL\Pages\resetPasswordConfirmation.aspx" />
     <Content Include="UL\Pages\search.aspx" />
     <Content Include="UL\scripts\scripts.js" />
     <Content Include="Web.config" />
@@ -102,6 +125,13 @@
     </Compile>
     <Compile Include="UL\PagesMaster\Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UL\PagesMaster\Site1Checkout.master.cs">
+      <DependentUpon>Site1Checkout.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\PagesMaster\Site1Checkout.master.designer.cs">
+      <DependentUpon>Site1Checkout.master</DependentUpon>
     </Compile>
     <Compile Include="UL\PagesMaster\Site1Footer.master.cs">
       <DependentUpon>Site1Footer.master</DependentUpon>
@@ -124,6 +154,13 @@
     <Compile Include="UL\PagesTest\grid_test.aspx.designer.cs">
       <DependentUpon>grid_test.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UL\Pages\about.aspx.cs">
+      <DependentUpon>about.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\about.aspx.designer.cs">
+      <DependentUpon>about.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UL\Pages\account.aspx.cs">
       <DependentUpon>account.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -131,12 +168,40 @@
     <Compile Include="UL\Pages\account.aspx.designer.cs">
       <DependentUpon>account.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UL\Pages\accountAddresses.aspx.cs">
+      <DependentUpon>accountAddresses.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\accountAddresses.aspx.designer.cs">
+      <DependentUpon>accountAddresses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UL\Pages\accountSettings.aspx.cs">
+      <DependentUpon>accountSettings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\accountSettings.aspx.designer.cs">
+      <DependentUpon>accountSettings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UL\Pages\addedToCart.aspx.cs">
+      <DependentUpon>addedToCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\addedToCart.aspx.designer.cs">
+      <DependentUpon>addedToCart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UL\Pages\Admin\adminAccounts.aspx.cs">
       <DependentUpon>adminAccounts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UL\Pages\Admin\adminAccounts.aspx.designer.cs">
       <DependentUpon>adminAccounts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UL\Pages\Admin\adminAddProduct.aspx.cs">
+      <DependentUpon>adminAddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\Admin\adminAddProduct.aspx.designer.cs">
+      <DependentUpon>adminAddProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="UL\Pages\Admin\adminDashboard.aspx.cs">
       <DependentUpon>adminDashboard.aspx</DependentUpon>
@@ -152,6 +217,20 @@
     <Compile Include="UL\Pages\Admin\adminProducts.aspx.designer.cs">
       <DependentUpon>adminProducts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UL\Pages\contact.aspx.cs">
+      <DependentUpon>contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\contact.aspx.designer.cs">
+      <DependentUpon>contact.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UL\Pages\policy.aspx.cs">
+      <DependentUpon>policy.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\policy.aspx.designer.cs">
+      <DependentUpon>policy.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UL\Pages\Admin\Site1Admin.Master.cs">
       <DependentUpon>Site1Admin.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -166,6 +245,34 @@
     <Compile Include="UL\Pages\cart.aspx.designer.cs">
       <DependentUpon>cart.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UL\Pages\checkoutAddBillingAddress.aspx.cs">
+      <DependentUpon>checkoutAddBillingAddress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\checkoutAddBillingAddress.aspx.designer.cs">
+      <DependentUpon>checkoutAddBillingAddress.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UL\Pages\checkoutAddDeliveryAddress.aspx.cs">
+      <DependentUpon>checkoutAddDeliveryAddress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\checkoutAddDeliveryAddress.aspx.designer.cs">
+      <DependentUpon>checkoutAddDeliveryAddress.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UL\Pages\checkoutConfirmation.aspx.cs">
+      <DependentUpon>checkoutConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\checkoutConfirmation.aspx.designer.cs">
+      <DependentUpon>checkoutConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UL\Pages\checkoutPayment.aspx.cs">
+      <DependentUpon>checkoutPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\checkoutPayment.aspx.designer.cs">
+      <DependentUpon>checkoutPayment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UL\Pages\error.aspx.cs">
       <DependentUpon>error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -173,12 +280,12 @@
     <Compile Include="UL\Pages\error.aspx.designer.cs">
       <DependentUpon>error.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UL\Pages\homepage.aspx.cs">
-      <DependentUpon>homepage.aspx</DependentUpon>
+    <Compile Include="UL\Pages\landing.aspx.cs">
+      <DependentUpon>landing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UL\Pages\homepage.aspx.designer.cs">
-      <DependentUpon>homepage.aspx</DependentUpon>
+    <Compile Include="UL\Pages\landing.aspx.designer.cs">
+      <DependentUpon>landing.aspx</DependentUpon>
     </Compile>
     <Compile Include="UL\Pages\login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -208,6 +315,13 @@
     <Compile Include="UL\Pages\orders.aspx.designer.cs">
       <DependentUpon>orders.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UL\Pages\product.aspx.cs">
+      <DependentUpon>product.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\product.aspx.designer.cs">
+      <DependentUpon>product.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UL\Pages\register.aspx.cs">
       <DependentUpon>register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -222,6 +336,13 @@
     <Compile Include="UL\Pages\resetPassword.aspx.designer.cs">
       <DependentUpon>resetPassword.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UL\Pages\resetPasswordConfirmation.aspx.cs">
+      <DependentUpon>resetPasswordConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\resetPasswordConfirmation.aspx.designer.cs">
+      <DependentUpon>resetPasswordConfirmation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UL\Pages\search.aspx.cs">
       <DependentUpon>search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -235,6 +356,7 @@
     <Content Include="UL\PagesMaster\Site1.Master" />
     <Content Include="UL\PagesMaster\Site1Footer.master" />
     <Content Include="UL\Pages\Admin\Site1Admin.Master" />
+    <Content Include="UL\PagesMaster\Site1Checkout.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -245,7 +367,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="DL\" />
-    <Folder Include="UL\IMG\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

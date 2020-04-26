@@ -24,45 +24,9 @@
 <body>
     <form id="form1" runat="server">
         <main>
-            <%-- Nav Bar --%>
-            <header>
-                <nav>
-                    <%-- TODO: make notifications bar --%>
-                    <%-- TODO: make navbar collapse into burger bar --%>
-                    <asp:HyperLink ID="linkLogo" runat="server" NavigateUrl="~/UL/Pages/main.aspx" Text="Pandemic Supplies" CssClass="nav-link nav-logo" />
-                    <div class="nav-search-wrapper">
-                        <asp:TextBox ID="tbxSearch" runat="server" CssClass="nav-search"></asp:TextBox>
-                        <asp:LinkButton ID="btnSearch" runat="server" CssClass="nav-search-button">
-                            <span class="material-icons" style="vertical-align: middle;">search</span>
-                        </asp:LinkButton>
-                    </div>
-                    <ul class="nav-link">
-                        <li class="nav-link-list_item">
-                            <div class="dropdown">
-                                <asp:HyperLink ID="linkAccount" runat="server" NavigateUrl="~/UL/Pages/account.aspx" Text="Login" />
-                                <div class="dropdown-content">
-                                    <asp:HyperLink ID="linkDropdownSignOut" runat="server" Text="Sign Out" CssClass="dropdown-content_link" NavigateUrl="~/UL/Pages/logOut.aspx"/>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="nav-link-list_item">
-                            <asp:HyperLink ID="linkOrders" runat="server" NavigateUrl="~/UL/Pages/orders.aspx" Text="Orders" /></li>
-                        <li class="nav-link-list_item_button">
-                            <asp:LinkButton ID="linkCart" runat="server" CssClass="nav-button" OnClick="linkCart_Click" CausesValidation="false">
-                                <span class="material-icons valign-middle">shopping_cart</span>
-                                <asp:Label ID="Label1" runat="server" Text="2" CssClass="valign-middle"></asp:Label>
-                            </asp:LinkButton>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
-
-            <div class="grid-wrapper">
                 <%-- BODY CONTENT HERE --%>
                 <asp:ContentPlaceHolder ID="body" runat="server">
                 </asp:ContentPlaceHolder>
-            </div>
-
             <%-- footers are added with second masterpage --%>
             <%-- FOOTER CONTENT HERE --%>
             <asp:ContentPlaceHolder ID="footer" runat="server">

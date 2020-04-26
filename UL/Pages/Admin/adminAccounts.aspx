@@ -1,15 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UL/Pages/Admin/Site1Admin.Master" AutoEventWireup="true" CodeBehind="adminAccounts.aspx.cs" Inherits="PandemicSuppliesWebApp.UL.Pages.Admin.adminAccounts" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <style>
-        p {font-weight: bold; }
-    </style>
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h1>Edit User Accounts</h1>
+<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
+    <h2>Edit User Accounts</h2>
     <hr />
-
     <br />
     <asp:Label ID="lblSearchBy" runat="server" Text="Search by "></asp:Label>
     <asp:DropDownList ID="lstSearchBy" runat="server">
@@ -18,7 +14,6 @@
         <asp:ListItem Value="IsActive">IsActive</asp:ListItem>
         <asp:ListItem Value="Name">Name</asp:ListItem>
     </asp:DropDownList>
-    <br />
     <asp:TextBox ID="tbxSearchBy" runat="server"></asp:TextBox>
     <asp:Button ID="btnSearchBy" runat="server" Text="Search" OnClick="btnSearchBy_Click" />
     <br />

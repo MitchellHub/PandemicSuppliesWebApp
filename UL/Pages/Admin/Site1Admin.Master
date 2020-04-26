@@ -9,6 +9,9 @@
     <%-- css --%>
     <link type="text/css" href="../../css/style.css" rel="stylesheet" />
 
+    <style>
+        p {font-weight: bold; }
+    </style>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -16,7 +19,12 @@
     <form id="form1" runat="server">
         <main>
             <div class="" style="padding: 50px;">
-                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <h1>
+                    <asp:HyperLink ID="linkHome" runat="server" NavigateUrl="~/UL/Pages/Admin/adminDashboard.aspx" 
+                        Text="Administration Dashboard" CssClass="no_decoration"/>
+                </h1>
+                <hr />
+                <asp:ContentPlaceHolder ID="body" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
         </main>

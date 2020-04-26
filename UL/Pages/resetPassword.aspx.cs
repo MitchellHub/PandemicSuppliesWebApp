@@ -13,5 +13,20 @@ namespace PandemicSuppliesWebApp.UL.Pages
         {
 
         }
+
+        protected void btnResetPassword_Click(object sender, EventArgs e)
+        {
+            string strEmail = "email@email.com";
+            string strAEmail = Convert.ToString(tbxEmail.Text);
+
+            if (strEmail == strAEmail)
+                Response.Redirect("resetPasswordConfirmation.aspx");
+            else
+            {
+                lblFeedback.Text = "That email is not registered to an account";
+                lblFeedback.Visible = true;
+            }
+                
+        }
     }
 }

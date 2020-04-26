@@ -11,7 +11,7 @@ namespace PandemicSuppliesWebApp.UL.Pages
 {
 
 
-    public partial class homepage
+    public partial class accountAddresses
     {
     }
 }

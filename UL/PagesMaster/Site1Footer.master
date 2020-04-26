@@ -1,17 +1,74 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/UL/PagesMaster/Site1.Master" AutoEventWireup="true" CodeBehind="Site1Footer.master.cs" Inherits="PandemicSuppliesWebApp.UL.PagesMaster.Site1Footer" %>
 
+<%-- Master page adds footer AND Navbar --%>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <asp:ContentPlaceHolder ID="body" runat="server">
-    </asp:ContentPlaceHolder>
+    <%-- Nav Bar --%>
+    <header>
+        <nav>
+            <%-- TODO: make notifications bar --%>
+            <%-- TODO: make navbar collapse into burger bar --%>
+            <asp:HyperLink ID="linkLogo" runat="server" NavigateUrl="~/UL/Pages/main.aspx" CssClass="nav-link nav-logo">
+                <asp:Image runat="server" ImageUrl="~/UL/IMG/logo.png" CssClass="nav-logo_picture"/>
+                Pandemic Supplies
+            </asp:HyperLink>
+            <div class="nav-search-wrapper">
+                <asp:TextBox ID="tbxSearch" runat="server" CssClass="nav-search"></asp:TextBox>
+                <asp:LinkButton ID="btnSearch" runat="server" CssClass="nav-search-button" OnClick="btnSearch_Click" CausesValidation="false">
+                            <span class="material-icons" style="vertical-align: middle;">search</span>
+                </asp:LinkButton>
+            </div>
+            <ul class="nav-link">
+                <li class="nav-link-list_item">
+                    <%-- Code for work on a dropdown menu, disabled because it is ugly --%>
+                    <%--<div class="dropdown">
+                        <asp:HyperLink ID="linkAccount" runat="server" Text="Login" NavigateUrl="~/UL/Pages/account.aspx" />
+                        <div class="dropdown-content">
+                            <asp:HyperLink ID="linkDropdownSignOut" runat="server" Text="Sign Out" CssClass="dropdown-content_link" NavigateUrl="~/UL/Pages/logOut.aspx" />
+                        </div>
+                    </div>--%>
+                    <asp:HyperLink ID="linkAccount" runat="server" Text="Login" NavigateUrl="~/UL/Pages/account.aspx" />
+                </li>
+                <li class="nav-link-list_item">
+                    <asp:HyperLink ID="linkOrders" runat="server" NavigateUrl="~/UL/Pages/orders.aspx" Text="Orders" /></li>
+                <li class="nav-link-list_item_button">
+                    <asp:LinkButton ID="linkCart" runat="server" CssClass="nav-button" OnClick="linkCart_Click" CausesValidation="false">
+                        <%--PostBackUrl="~/UL/Pages/search.aspx">--%>
+                        <%-- Could use postback here, not sure which is better --%>
+                        <span class="material-icons valign-middle">shopping_cart</span>
+                        <asp:Label ID="lblCartStock" runat="server" Text="" CssClass="valign-middle"></asp:Label>
+                    </asp:LinkButton>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="margin-wrapper">
+        <%-- BODY CONTENT HERE --%>
+        <asp:ContentPlaceHolder ID="body" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
     <footer>
+        <hr />
+        <div class="grid footer-margin">
+            <div style="text-align: center;">
+                <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/policy.aspx" Text="Privacy Policy" CssClass="no_decoration"/>
+            </div>
+            <div style="text-align: center;">
+                <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/contact.aspx" Text="Contact Us" CssClass="no_decoration"/>
+            </div>
+            <div style="text-align: center;">
+                <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/about.aspx" Text="About Us" CssClass="no_decoration"/>
+            </div>
+        </div>
         <%-- FOOTER CONTENT HERE --%>
         <asp:ContentPlaceHolder ID="footer" runat="server">
         </asp:ContentPlaceHolder>

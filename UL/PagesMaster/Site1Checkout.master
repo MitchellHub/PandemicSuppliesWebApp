@@ -1,0 +1,23 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/UL/PagesMaster/Site1.Master" AutoEventWireup="true" CodeBehind="Site1Checkout.master.cs" Inherits="PandemicSuppliesWebApp.UL.PagesMaster.Site1Checkout" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
+    <h1 style="text-align: center; padding-top: 2rem;">
+        <asp:HyperLink ID="linkLogo" runat="server" NavigateUrl="~/UL/Pages/main.aspx" Text="Pandemic Supplies" CssClass="nav-link nav-logo" ForeColor="Black"/>
+    </h1>
+    <div class="margin-wrapper">
+        <h2>Checkout <asp:hyperlink runat="server" Text="3 Items" NavigateUrl="~/UL/Pages/cart.aspx"/></h2>
+        <hr class="hr-margin"/>
+        <asp:ContentPlaceHolder ID="body" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
+    <asp:ContentPlaceHolder ID="footer" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
