@@ -60,13 +60,13 @@
         <hr />
         <div class="grid footer-margin">
             <div style="text-align: center;">
-                <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/policy.aspx" Text="Privacy Policy" CssClass="no_decoration"/>
+                <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/policy.aspx" Text="Privacy Policy" CssClass="no_decoration" />
             </div>
             <div style="text-align: center;">
-                <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/contact.aspx" Text="Contact Us" CssClass="no_decoration"/>
+                <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/contact.aspx" Text="Contact Us" CssClass="no_decoration" />
             </div>
             <div style="text-align: center;">
-                <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/about.aspx" Text="About Us" CssClass="no_decoration"/>
+                <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/about.aspx" Text="About Us" CssClass="no_decoration" />
             </div>
         </div>
         <%-- FOOTER CONTENT HERE --%>

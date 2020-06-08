@@ -24,9 +24,9 @@
 <body>
     <form id="form1" runat="server">
         <main>
-                <%-- BODY CONTENT HERE --%>
-                <asp:ContentPlaceHolder ID="body" runat="server">
-                </asp:ContentPlaceHolder>
+            <%-- BODY CONTENT HERE --%>
+            <asp:ContentPlaceHolder ID="body" runat="server">
+            </asp:ContentPlaceHolder>
             <%-- footers are added with second masterpage --%>
             <%-- FOOTER CONTENT HERE --%>
             <asp:ContentPlaceHolder ID="footer" runat="server">

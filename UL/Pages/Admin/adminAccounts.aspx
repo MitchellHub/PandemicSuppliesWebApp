@@ -10,9 +10,9 @@
     <asp:Label ID="lblSearchBy" runat="server" Text="Search by "></asp:Label>
     <asp:DropDownList ID="lstSearchBy" runat="server">
         <asp:ListItem Selected="True" Value="UserID">UserID</asp:ListItem>
-        <asp:ListItem Value="Email">Email</asp:ListItem>
-        <asp:ListItem Value="IsActive">IsActive</asp:ListItem>
-        <asp:ListItem Value="Name">Name</asp:ListItem>
+        <%--<asp:ListItem Value="Email">Email</asp:ListItem>--%>
+        <%--<asp:ListItem Value="IsActive">IsActive</asp:ListItem>--%>
+        <%--<asp:ListItem Value="Name">Name</asp:ListItem>--%>
     </asp:DropDownList>
     <asp:TextBox ID="tbxSearchBy" runat="server"></asp:TextBox>
     <asp:Button ID="btnSearchBy" runat="server" Text="Search" OnClick="btnSearchBy_Click" />
@@ -28,17 +28,16 @@
         <asp:Label ID="lblAccountsGridViewFeedback" runat="server" Text="Displaying All User Accounts"></asp:Label>
     </p>
     <br />
+    <%-- Grid view for displaying accounts --%>
     <asp:GridView ID="gvAccounts" HeaderStyle-BackColor="#2d545e" HeaderStyle-ForeColor="White"
-        runat="server" AutoGenerateColumns="False" OnRowCommand="gvAccounts_RowCommand">
+        runat="server" AutoGenerateColumns="False" OnRowCommand="gvAccounts_RowCommand" DataKeyNames="UserID">
         <Columns>
-            <asp:BoundField DataField="UserID" HeaderText="UserID" ItemStyle-Width="100" />
-            <asp:BoundField DataField="Email" HeaderText="Email" ItemStyle-Width="150" />
-            <asp:BoundField DataField="IsActive" HeaderText="IsActive" ItemStyle-Width="150" />
-            <asp:TemplateField>
-                <ItemTemplate>
-                    <asp:Button Text="View" runat="server" CommandName="View" CommandArgument="<%# Container.DataItemIndex %>" />
-                </ItemTemplate>
-            </asp:TemplateField>
+            <asp:BoundField DataField="UserID" HeaderText="UserID" ItemStyle-Width="100" InsertVisible="False" ReadOnly="True" SortExpression="UserID" />
+            <asp:BoundField DataField="Email" HeaderText="Email" ItemStyle-Width="150" SortExpression="Email" />
+            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+            <asp:BoundField DataField="CreateDate" HeaderText="CreateDate" SortExpression="CreateDate" />
+            <asp:CheckBoxField DataField="IsActive" HeaderText="IsActive" SortExpression="IsActive" />
+            <asp:ButtonField CommandName="View" ButtonType="Link" Text="View Account Details" />
         </Columns>
     </asp:GridView>
     <br />

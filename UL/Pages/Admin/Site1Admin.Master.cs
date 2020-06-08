@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PandemicSuppliesWebApp.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,9 +12,9 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string strUserID = Convert.ToString(Session["User_ID"]);
+            User usrSession = (User) Session["User"];
 
-            if (strUserID != "2")   // check user is admin
+            if (!usrSession.IsAdmin)   // check user is admin
             {
                 Response.Redirect("~/UL/Pages/error.aspx");
             }

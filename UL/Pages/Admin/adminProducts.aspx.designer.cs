@@ -7,12 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PandemicSuppliesWebApp.UL.Pages.Admin
-{
+namespace PandemicSuppliesWebApp.UL.Pages.Admin {
 
 
-    public partial class adminProducts
-    {
+    public partial class adminProducts {
 
         /// <summary>
         /// lblSearchBy control.
@@ -49,6 +47,15 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnSearchBy;
+
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
         /// btnDisplayAll control.
@@ -175,24 +182,6 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxStockLevel;
-
-        /// <summary>
-        /// lblIsAvailable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIsAvailable;
-
-        /// <summary>
-        /// cbxIsAvailable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbxIsAvailable;
 
         /// <summary>
         /// lblImgSource control.

@@ -21,8 +21,8 @@
             <asp:Label ID="lblCartSubTotalPrice" runat="server" Text="$319.95" CssClass="added_to_cart-subtotal_price" />
         </div>
         <div class="flex-item flex-item-product_page_buttons">
-            <asp:Button ID="btnCart" runat="server" Text="Cart" CssClass="button added_to_cart-button" OnClick="btnCart_Click"/>
-            <asp:Button ID="btnCheckOut" runat="server" Text="Go to Checkout" CssClass="button added_to_cart-button" OnClick="btnCheckOut_Click"/>
+            <asp:Button ID="btnCart" runat="server" Text="Cart" CssClass="button added_to_cart-button" OnClick="btnCart_Click" />
+            <asp:Button ID="btnCheckOut" runat="server" Text="Go to Checkout" CssClass="button added_to_cart-button" OnClick="btnCheckOut_Click" />
         </div>
     </div>
     <br />

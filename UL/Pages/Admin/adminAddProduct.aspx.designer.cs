@@ -7,12 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PandemicSuppliesWebApp.UL.Pages.Admin
-{
+namespace PandemicSuppliesWebApp.UL.Pages.Admin {
 
 
-    public partial class adminAddProduct
-    {
+    public partial class adminAddProduct {
 
         /// <summary>
         /// lblProductName control.
@@ -33,6 +31,15 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
         protected global::System.Web.UI.WebControls.TextBox tbxProductName;
 
         /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+
+        /// <summary>
         /// lblProductDesc control.
         /// </summary>
         /// <remarks>
@@ -49,6 +56,15 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxProductDesc;
+
+        /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
         /// lblProductPrice control.
@@ -69,6 +85,15 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
         protected global::System.Web.UI.WebControls.TextBox tbxProductPrice;
 
         /// <summary>
+        /// RequiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+
+        /// <summary>
         /// lblStockLevel control.
         /// </summary>
         /// <remarks>
@@ -87,6 +112,15 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
         protected global::System.Web.UI.WebControls.TextBox tbxStockLevel;
 
         /// <summary>
+        /// RequiredFieldValidator4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
+
+        /// <summary>
         /// lblImgSource control.
         /// </summary>
         /// <remarks>
@@ -103,6 +137,15 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbxImgSource;
+
+        /// <summary>
+        /// RequiredFieldValidator5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
 
         /// <summary>
         /// lblIsActive control.
@@ -139,5 +182,14 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancel;
+
+        /// <summary>
+        /// lblFeedback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFeedback;
     }
 }

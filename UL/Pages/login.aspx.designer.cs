@@ -7,12 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PandemicSuppliesWebApp.UL.Pages
-{
+namespace PandemicSuppliesWebApp.UL.Pages {
 
 
-    public partial class login
-    {
+    public partial class login {
 
         /// <summary>
         /// linkLogo control.
@@ -22,6 +20,15 @@ namespace PandemicSuppliesWebApp.UL.Pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink linkLogo;
+
+        /// <summary>
+        /// pnlLoginPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlLoginPanel;
 
         /// <summary>
         /// lblFeedback control.

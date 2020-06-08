@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PandemicSuppliesWebApp.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,30 +12,43 @@ namespace PandemicSuppliesWebApp.UL.PagesMaster
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string strUserID = Convert.ToString(Session["User_ID"]);
-            string strUserName = Convert.ToString(Session["User_Name"]);
+            // following code makes btnSearch the 'DefaultButton' of the page, ensuring that pressing enter fires btnSearch
+            ContentPlaceHolder cph = (ContentPlaceHolder)Master.FindControl("body");
+            LinkButton btnSearch = cph.FindControl("btnSearch") as LinkButton;
+            cph.Page.Form.DefaultButton = btnSearch.UniqueID;
+
+            // grab the session variable
+            User usrSession = (User) Session["User"];
+
+            //string strUserID = Convert.ToString(Session["User_ID"]);
+            //string strUserName = Convert.ToString(Session["User_Name"]);
 
             lblCartStock.Text = "3";
 
-            if (Session["User_ID"] != null)     // if user is logged in
+            if (usrSession != null)     // if user is logged in
             {
-                linkAccount.Text = "Hi, " + strUserName;
-                lblCartStock.Text = "3";
-                linkOrders.NavigateUrl = "~/UL/Pages/orders.aspx";
-                linkAccount.NavigateUrl = "~/UL/Pages/account.aspx";
-                // maybe format url with account.aspx?UserID={0}
-            }
-            else                                // if user is not logged in
+                if (usrSession.IsAdmin == true)  // if user is admin, log them out - they shouldn't be in customer site
+                    Response.Redirect("~/UL/Pages/logOut.aspx");
+
+                else
+                {
+                    linkAccount.Text = "Hi, " + usrSession.Name.ToString();
+                    lblCartStock.Text = "3";
+                    linkOrders.NavigateUrl = "~/UL/Pages/orders.aspx";
+                    linkAccount.NavigateUrl = "~/UL/Pages/account.aspx";
+                    // maybe format url with account.aspx?UserID={0}}
+
+                }
+            } 
+            else                                // if user is not logged in/user session == null
             {
                 linkAccount.Text = "Login";
                 lblCartStock.Text = "";
                 linkAccount.NavigateUrl = "~/UL/Pages/login.aspx";
                 linkOrders.NavigateUrl = "~/UL/Pages/login.aspx";
-                // lblCartStock.Text = "";
             }
 
-            if (strUserID == "2")  // if user is admin, log them out - they shouldn't be in customer site
-                Response.Redirect("~/UL/Pages/logOut.aspx");
+            
         }
         protected void linkCart_Click(object sender, EventArgs e)
         {
@@ -49,7 +63,6 @@ namespace PandemicSuppliesWebApp.UL.PagesMaster
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            // need to implement 'enter key' functionality
             if (tbxSearch.Text == "")
                 Response.Redirect("~/UL/Pages/main.aspx");
             else

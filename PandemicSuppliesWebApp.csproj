@@ -113,8 +113,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\BLAdminAccounts.cs" />
+    <Compile Include="BL\BLAdminAddProduct.cs" />
+    <Compile Include="BL\BLAdminProducts.cs" />
     <Compile Include="BL\BLLogin.cs" />
     <Compile Include="DAL\DALLogin.cs" />
+    <Compile Include="DAL\DALProductAccess.cs" />
+    <Compile Include="DAL\DALUserAccess.cs" />
+    <Compile Include="DAL\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -366,7 +372,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="DL\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -7,12 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PandemicSuppliesWebApp.UL.Pages.Admin
-{
+namespace PandemicSuppliesWebApp.UL.Pages.Admin {
 
 
-    public partial class adminAccounts
-    {
+    public partial class adminAccounts {
 
         /// <summary>
         /// lblSearchBy control.

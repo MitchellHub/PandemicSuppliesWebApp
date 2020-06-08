@@ -7,12 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PandemicSuppliesWebApp.UL.PagesMaster
-{
+namespace PandemicSuppliesWebApp.UL.PagesMaster {
 
 
-    public partial class Site1Footer
-    {
+    public partial class Site1Footer {
 
         /// <summary>
         /// head control.

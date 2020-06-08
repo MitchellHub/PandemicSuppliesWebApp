@@ -7,12 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PandemicSuppliesWebApp.UL.Pages.Admin
-{
+namespace PandemicSuppliesWebApp.UL.Pages.Admin {
 
 
-    public partial class adminDashboard
-    {
+    public partial class adminDashboard {
 
         /// <summary>
         /// HyperLink1 control.
@@ -40,5 +38,14 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink3;
+
+        /// <summary>
+        /// HyperLink4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink4;
     }
 }
