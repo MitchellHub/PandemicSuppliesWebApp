@@ -10,10 +10,10 @@ namespace PandemicSuppliesWebApp.DAL {
         public static DataTable dtbNonAdminUsers(int _intSearchID)
             // method returns all users if searchID == 0, or returns user with matching ID
         {
-            System.Diagnostics.Debug.WriteLine(_intSearchID);
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
 
             DataTable dtbAccounts = new DataTable();
-            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
+            
             SqlCommand cmdAccountsQuery;
 
             if (_intSearchID == 0)  // if search term id is 0, return all users
@@ -23,7 +23,7 @@ namespace PandemicSuppliesWebApp.DAL {
             }
             else                    // else there is a search id
             {
-                cmdAccountsQuery = new SqlCommand("Users_UspReturnNonAdminUsersByID", conn);    // create command
+                cmdAccountsQuery = new SqlCommand("Users_UspReturnUserByID", conn);    // create command
                 cmdAccountsQuery.CommandType = CommandType.StoredProcedure;                     // set to sp
                 cmdAccountsQuery.Parameters.Add(new SqlParameter("@UserID", SqlDbType.Int));    // add param
                 cmdAccountsQuery.Parameters["@UserID"].Value = _intSearchID;                    // set param to ID
@@ -51,6 +51,36 @@ namespace PandemicSuppliesWebApp.DAL {
                 conn.Close();
             }
             return dtbAccounts;
+        }
+
+        public static void updateUserIsActiveStatusInDatabase(int _intUserID, bool _boolIsActive)
+        {
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
+            
+            // create command
+            SqlCommand cmdUpdateIsActive = new SqlCommand("Users_UspUpdateIsActiveByUserID", conn);
+            cmdUpdateIsActive.CommandType = CommandType.StoredProcedure;
+
+            // parameters
+            SqlParameter[] parameters = new SqlParameter[] {
+                new SqlParameter("@UserID", _intUserID),
+                new SqlParameter("@IsActive", _boolIsActive)
+            };
+            cmdUpdateIsActive.Parameters.AddRange(parameters);
+
+            try
+            {
+                conn.Open();
+                cmdUpdateIsActive.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
     }
 }

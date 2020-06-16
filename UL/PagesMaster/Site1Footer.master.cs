@@ -55,7 +55,7 @@ namespace PandemicSuppliesWebApp.UL.PagesMaster
             // users should be able to add items to a cart without making an account,
             // but for now redirect to login page
 
-            if (Session["User_ID"] != null)
+            if (Session["User"] != null)
                 Response.Redirect("~/UL/Pages/cart.aspx");
             else
                 Response.Redirect("~/UL/Pages/login.aspx");

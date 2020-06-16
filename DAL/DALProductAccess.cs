@@ -8,7 +8,7 @@ using System.Web;
 namespace PandemicSuppliesWebApp.DAL {
     public class DALProductAccess {
         public static int addProductToDatabaseReturnID(string _strProdName, string _strProdDesc, decimal _decProductPrice, int _intStockLevel, bool _boolIsActive, string _strImgSource)
-        // method inserts a product into the Products table
+        // method inserts a product into the Products table using a stored procedure
         {
             SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
             SqlCommand cmdAddProduct = new SqlCommand("Products_UspInsertProduct", conn);
@@ -48,6 +48,7 @@ namespace PandemicSuppliesWebApp.DAL {
         }
 
         public static void updateProductDataInDatabase(int _intProductID, string _strProductName, string _strProductDesc, decimal _decProductPrice, int _intStockLevel, string _strImgSource, bool _boolIsActive)
+            // method updates a product in the db using a stored procedure
         {
             SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
             

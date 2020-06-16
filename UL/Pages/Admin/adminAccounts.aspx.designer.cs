@@ -40,6 +40,15 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin {
         protected global::System.Web.UI.WebControls.TextBox tbxSearchBy;
 
         /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+
+        /// <summary>
         /// btnSearchBy control.
         /// </summary>
         /// <remarks>
@@ -76,22 +85,40 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin {
         protected global::System.Web.UI.WebControls.GridView gvAccounts;
 
         /// <summary>
-        /// lblUserIDDisplay control.
+        /// lblUserIDValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUserIDDisplay;
+        protected global::System.Web.UI.WebControls.Label lblUserIDValue;
 
         /// <summary>
-        /// lblEmailDisplay control.
+        /// lblEmailValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEmailDisplay;
+        protected global::System.Web.UI.WebControls.Label lblEmailValue;
+
+        /// <summary>
+        /// lblNameValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNameValue;
+
+        /// <summary>
+        /// lblIsActiveValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIsActiveValue;
 
         /// <summary>
         /// btnActivate control.
@@ -103,6 +130,15 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin {
         protected global::System.Web.UI.WebControls.Button btnActivate;
 
         /// <summary>
+        /// btnDeActivate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDeActivate;
+
+        /// <summary>
         /// btnViewInvoices control.
         /// </summary>
         /// <remarks>
@@ -110,6 +146,15 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnViewInvoices;
+
+        /// <summary>
+        /// lblAccountsInfoFeedback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAccountsInfoFeedback;
 
         /// <summary>
         /// lblInvoiceGridViewFeedback control.

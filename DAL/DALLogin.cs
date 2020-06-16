@@ -39,8 +39,8 @@ namespace PandemicSuppliesWebApp.DAL
                 cmdLoginAndReturnUser.Parameters.Add(new SqlParameter("@UserID", SqlDbType.Int));       // add out param
                 cmdLoginAndReturnUser.Parameters["@UserID"].Direction = ParameterDirection.Output;      // direction = output
                 // Name out parameter
-                cmdLoginAndReturnUser.Parameters.Add(new SqlParameter("@Name", SqlDbType.VarChar, 250));
-                cmdLoginAndReturnUser.Parameters["@Name"].Direction = ParameterDirection.Output;
+                cmdLoginAndReturnUser.Parameters.Add(new SqlParameter("@FirstName", SqlDbType.VarChar, 250));
+                cmdLoginAndReturnUser.Parameters["@FirstName"].Direction = ParameterDirection.Output;
                 // IsActive out parameter
                 cmdLoginAndReturnUser.Parameters.Add(new SqlParameter("@IsActive", SqlDbType.Bit));
                 cmdLoginAndReturnUser.Parameters["@IsActive"].Direction = ParameterDirection.Output;
@@ -75,7 +75,7 @@ namespace PandemicSuppliesWebApp.DAL
 
                     if (usrRtnUser.UserID > 0)  // if login is successful, populate user object
                     {
-                        usrRtnUser.Name = (string)cmdLoginAndReturnUser.Parameters["@Name"].Value;
+                        usrRtnUser.Name = (string)cmdLoginAndReturnUser.Parameters["@FirstName"].Value;
                         usrRtnUser.IsActive = (bool)cmdLoginAndReturnUser.Parameters["@IsActive"].Value;
                         usrRtnUser.IsAdmin = (bool)cmdLoginAndReturnUser.Parameters["@IsAdmin"].Value;
                         usrRtnUser.Email = strEm;

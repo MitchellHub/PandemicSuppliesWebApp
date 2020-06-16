@@ -11,9 +11,8 @@ namespace PandemicSuppliesWebApp.UL.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["User"] = null;
-            //Session["User_ID"] = null;
-            //Session["User_Name"] = null;
+            Session.Clear();
+            Session.RemoveAll();
         }
     }
 }

@@ -24,7 +24,7 @@
 
     <asp:Button runat="server" ID="btnAdd" Text="Add product" OnClick="btnAdd_Click" CausesValidation="True"/>
 
-    <asp:Button runat="server" ID="btnCancel" Text="Cancel" OnClick="btnCancel_Click"/>
+    <asp:Button runat="server" ID="btnCancel" Text="Cancel" OnClick="btnCancel_Click" CausesValidation="false"/>
 
     <asp:Label runat="server" ID="lblFeedback" Text="" />
 </asp:Content>

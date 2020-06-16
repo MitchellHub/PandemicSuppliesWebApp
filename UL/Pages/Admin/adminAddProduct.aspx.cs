@@ -21,12 +21,10 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
-        // method sends product info to lower layers
+            // method sends product info to lower layers
         {
             string strProdName = tbxProductName.Text.ToString();
             string strProdDesc = tbxProductDesc.Text.ToString();
-            // string strProductPrice = lblProductPrice.Text.ToString();
-
             string strProductPrice = tbxProductPrice.Text;
             string intStockLevel = tbxStockLevel.Text;
             bool boolIsActive = cbxIsActive.Checked;
@@ -40,11 +38,6 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
                 lblFeedback.Text = "Invalid input data.";
             else
                 lblFeedback.Text = "There was a problem communicating with the server.";
-            /*
-        catch (Exception ex)
-        {
-            lblFeedback.Text = "There was a problem querying the server. Exception code: " + ex.ToString();
-        }*/
         }
     }
 }

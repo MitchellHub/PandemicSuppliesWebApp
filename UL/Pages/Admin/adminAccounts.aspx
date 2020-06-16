@@ -4,7 +4,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <h2>Edit User Accounts</h2>
+    <h2>User Accounts</h2>
     <hr />
     <br />
     <asp:Label ID="lblSearchBy" runat="server" Text="Search by "></asp:Label>
@@ -14,8 +14,22 @@
         <%--<asp:ListItem Value="IsActive">IsActive</asp:ListItem>--%>
         <%--<asp:ListItem Value="Name">Name</asp:ListItem>--%>
     </asp:DropDownList>
-    <asp:TextBox ID="tbxSearchBy" runat="server"></asp:TextBox>
-    <asp:Button ID="btnSearchBy" runat="server" Text="Search" OnClick="btnSearchBy_Click" />
+    <asp:TextBox ID="tbxSearchBy" runat="server" ValidationGroup="SearchValidation" CausesValidation="true"/>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" 
+        runat="server" 
+        ErrorMessage="Must enter a value" 
+        ValidationGroup="SearchValidation"
+        Display="Dynamic"
+        ControlToValidate="tbxSearchBy" 
+        CssClass="input-error_message" />
+    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" 
+        runat="server" 
+        ErrorMessage="Value must be a number" 
+        ValidationGroup="SearchValidation" 
+        Display="Dynamic"/
+        ControlToValidate="tbxSearchBy"
+        CssClass="input-error_message" />
+    <asp:Button ID="btnSearchBy" runat="server" Text="Search" OnClick="btnSearchBy_Click" ValidationGroup="SearchValidation" CausesValidation="true" />
     <br />
     <br />
     <asp:Button ID="btnDisplayAll" runat="server" Text="Display All Accounts" OnClick="btnDisplayAll_Click" />
@@ -34,9 +48,9 @@
         <Columns>
             <asp:BoundField DataField="UserID" HeaderText="UserID" ItemStyle-Width="100" InsertVisible="False" ReadOnly="True" SortExpression="UserID" />
             <asp:BoundField DataField="Email" HeaderText="Email" ItemStyle-Width="150" SortExpression="Email" />
-            <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+            <asp:BoundField DataField="FirstName" HeaderText="FirstName" SortExpression="FirstName" />
             <asp:BoundField DataField="CreateDate" HeaderText="CreateDate" SortExpression="CreateDate" />
-            <asp:CheckBoxField DataField="IsActive" HeaderText="IsActive" SortExpression="IsActive" />
+            <asp:BoundField DataField="IsActive" HeaderText="IsActive" SortExpression="IsActive" />
             <asp:ButtonField CommandName="View" ButtonType="Link" Text="View Account Details" />
         </Columns>
     </asp:GridView>
@@ -44,13 +58,28 @@
     <hr />
 
     <br />
-    <asp:Label ID="lblUserIDDisplay" runat="server" Text="UserID: not selected"></asp:Label>
+    <asp:Label runat="server" Text="UserID: "></asp:Label>
+    <asp:Label ID="lblUserIDValue" runat="server" Text="" />
     <br />
-    <asp:Label ID="lblEmailDisplay" runat="server" Text="Email: not selected"></asp:Label>
+    <br />
+    <asp:Label runat="server" Text="Email: "></asp:Label>
+    <asp:Label ID="lblEmailValue" runat="server" Text="" />
     <br />
     <br />
-    <asp:Button ID="btnActivate" runat="server" Text="Suspend Account" />
-    <asp:Button ID="btnViewInvoices" runat="server" Text="View Invoices" OnClick="btnViewInvoices_Click" />
+    <asp:Label runat="server" Text="Name: " />
+    <asp:Label ID="lblNameValue" runat="server" Text="" />
+    <br />
+    <br />
+    <asp:Label runat="server" Text="Active: " />
+    <asp:Label ID="lblIsActiveValue" runat="server" Text="" />
+    <br />
+    <br />
+    <asp:Button ID="btnActivate" runat="server" Text="Activate Account" OnClick="btnActivate_Click" Visible="false"/>
+    <asp:Button ID="btnDeActivate" runat="server" Text="Deactivate Account" OnClick="btnDeactivate_Click" Visible="false"/>
+    <asp:Button ID="btnViewInvoices" runat="server" Text="View Invoices" OnClick="btnViewInvoices_Click" Visible="false" />
+    <br />
+    <br />
+    <asp:Label ID="lblAccountsInfoFeedback" runat="server" Visible="false" />
     <br />
     <br />
     <hr />
