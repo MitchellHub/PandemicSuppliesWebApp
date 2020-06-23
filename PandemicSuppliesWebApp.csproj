@@ -43,7 +43,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.AspNet.FriendlyUrls, Version=1.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -71,13 +75,8 @@
     <Content Include="UL\css\style.css" />
     <Content Include="UL\css\theme.css" />
     <Content Include="UL\IMG\afterpay.jpg" />
-    <Content Include="UL\IMG\bottled_water.jpg" />
-    <Content Include="UL\IMG\hand_sanitizer.jpg" />
     <Content Include="UL\IMG\logo.png" />
     <Content Include="UL\IMG\mastercard.png" />
-    <Content Include="UL\IMG\pasta.jpg" />
-    <Content Include="UL\IMG\rice.jpg" />
-    <Content Include="UL\IMG\riot_gas_mask.jpg" />
     <Content Include="UL\IMG\sale_banner.png" />
     <Content Include="UL\IMG\visa.jpg" />
     <Content Include="UL\PagesTest\DBTest.aspx" />
@@ -85,6 +84,7 @@
     <Content Include="UL\Pages\about.aspx" />
     <Content Include="UL\Pages\account.aspx" />
     <Content Include="UL\Pages\accountAddresses.aspx" />
+    <Content Include="UL\Pages\accountAddressesAddAddress.aspx" />
     <Content Include="UL\Pages\accountSettings.aspx" />
     <Content Include="UL\Pages\addedToCart.aspx" />
     <Content Include="UL\Pages\Admin\adminAccounts.aspx" />
@@ -106,25 +106,46 @@
     <Content Include="UL\Pages\orders.aspx" />
     <Content Include="UL\Pages\product.aspx" />
     <Content Include="UL\Pages\register.aspx" />
+    <Content Include="UL\Pages\registerSuccess.aspx" />
     <Content Include="UL\Pages\resetPassword.aspx" />
     <Content Include="UL\Pages\resetPasswordConfirmation.aspx" />
     <Content Include="UL\Pages\search.aspx" />
     <Content Include="UL\scripts\scripts.js" />
+    <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BL\BLAccountAddresses.cs" />
     <Compile Include="BL\BLAdminAccounts.cs" />
     <Compile Include="BL\BLAdminAddProduct.cs" />
     <Compile Include="BL\BLAdminProducts.cs" />
+    <Compile Include="BL\BLCart.cs" />
     <Compile Include="BL\BLLogin.cs" />
+    <Compile Include="BL\BLProductDisplay.cs" />
+    <Compile Include="BL\BLRegister.cs" />
+    <Compile Include="BL\PaymentSystem\INFT3050PaymentFactory.cs" />
+    <Compile Include="BL\PaymentSystem\INFT3050PaymentSystem.cs" />
+    <Compile Include="BL\PaymentSystem\IPaymentSystem.cs" />
+    <Compile Include="BL\Product.cs" />
+    <Compile Include="BL\User.cs" />
+    <Compile Include="DAL\DALBillingAddressAccess.cs" />
+    <Compile Include="DAL\DALCartAccess.cs" />
     <Compile Include="DAL\DALLogin.cs" />
     <Compile Include="DAL\DALProductAccess.cs" />
+    <Compile Include="DAL\DALRegister.cs" />
     <Compile Include="DAL\DALUserAccess.cs" />
-    <Compile Include="DAL\User.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Site.Mobile.Master.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Mobile.Master.designer.cs">
+      <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
     <Compile Include="UL\PagesMaster\Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -180,6 +201,13 @@
     </Compile>
     <Compile Include="UL\Pages\accountAddresses.aspx.designer.cs">
       <DependentUpon>accountAddresses.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UL\Pages\accountAddressesAddAddress.aspx.cs">
+      <DependentUpon>accountAddressesAddAddress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\accountAddressesAddAddress.aspx.designer.cs">
+      <DependentUpon>accountAddressesAddAddress.aspx</DependentUpon>
     </Compile>
     <Compile Include="UL\Pages\accountSettings.aspx.cs">
       <DependentUpon>accountSettings.aspx</DependentUpon>
@@ -335,6 +363,13 @@
     <Compile Include="UL\Pages\register.aspx.designer.cs">
       <DependentUpon>register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UL\Pages\registerSuccess.aspx.cs">
+      <DependentUpon>registerSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\registerSuccess.aspx.designer.cs">
+      <DependentUpon>registerSuccess.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UL\Pages\resetPassword.aspx.cs">
       <DependentUpon>resetPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -356,6 +391,13 @@
     <Compile Include="UL\Pages\search.aspx.designer.cs">
       <DependentUpon>search.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ViewSwitcher.ascx.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewSwitcher.ascx.designer.cs">
+      <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -363,6 +405,7 @@
     <Content Include="UL\PagesMaster\Site1Footer.master" />
     <Content Include="UL\Pages\Admin\Site1Admin.Master" />
     <Content Include="UL\PagesMaster\Site1Checkout.master" />
+    <Content Include="Site.Mobile.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

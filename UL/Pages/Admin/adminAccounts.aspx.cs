@@ -14,7 +14,8 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            fillGridViewWithAllAccounts();
+            if (!IsPostBack)
+                fillGridViewWithAllAccounts();
         }
 
         // ********** ********** ********** Buttons ********** ********** **********  //
@@ -52,7 +53,6 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
             // 'selects' a user by sending info to labels
         {
             // check that the view button was pressed
-            
             if (e.CommandName == "View")
             {
                 // Determine the RowIndex of the Row whose Button was clicked.
@@ -143,7 +143,6 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
         {
             // retrieve userID
             string strUserID = lblUserIDValue.Text.ToString();
-
             try
             {
                 BL.BLAdminAccounts.setUserIsActiveStatus(strUserID, false);     // query db
@@ -157,7 +156,6 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
                 lblAccountsInfoFeedback.Visible = true;
                 lblAccountsInfoFeedback.ForeColor = Color.Red;
             }
-
             // reset controls
             resetUserInfoControls();
             fillGridViewWithAllAccounts();
@@ -186,7 +184,7 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
         }
 
         // ********** ********** ********** Methods ********** ********** **********  //
-        protected void fillGridViewWithAllAccounts()
+        private void fillGridViewWithAllAccounts()
         {
             lblAccountsGridViewFeedback.Text = "Displaying All User Accounts";
             DataTable dtbAccounts = BL.BLAdminAccounts.dtbAccounts("0");    // query db with '0' to return all accounts
@@ -195,9 +193,10 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
             gvAccounts.Visible = true;
         }
 
-        protected void resetUserInfoControls()
+        private void resetUserInfoControls()
         {
             lblUserIDValue.Text = "";
+            lblNameValue.Text = "";
             lblEmailValue.Text = "";
             lblIsActiveValue.Text = "";
 

@@ -4,15 +4,27 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <%--<h1>Main</h1>--%>
-    
-    <%-- Since this page should be generated from the database,
-         each control that relates to a specific product will not have an ID (I think)
-         Therefore I've left out the IDs .
-         I think I will be using something like an asp:literal --%>
-    
-    <%--<asp:Literal ID="litProducts" runat="server"></asp:Literal>--%>
-
     <div class="grid-wrapper_products">
+        <asp:ListView ID="listviewProducts" runat="server" OnItemDataBound="listviewProducts_DataBound">
+            <ItemTemplate>
+                <div class="grid-item-product">
+                    <%--url bound in codebehind--%>
+                    <asp:HyperLink runat="server" ID="lnkProductLink">
+                        <div class="image-product-wrapper">
+                            <%-- image source bound in codebehind --%>
+                            <asp:Image runat="server" ID="imgProductImage" CssClass="image-product" />
+                        </div>
+                        <p class="product-heading"><%#Eval("ProductName")%></p>
+                        <p class="product_price">$<%#Eval("ProductPrice")%></p>
+                        <p><span class="product-in_stock">Stock Level: <%#Eval("StockLevel")%></span></p>
+                    </asp:HyperLink>
+                </div>
+            </ItemTemplate>
+        </asp:ListView>
+    </div>
+
+    
+<%--    <div class="grid-wrapper_products">
         <div class="grid-item-product">
             <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/product.aspx" ForeColor="Black">
                 <div class="image-product-wrapper">
@@ -103,7 +115,7 @@
                 <p><span class="product-in_stock">In-Stock!</span></p>
             </asp:HyperLink>
         </div>
-    </div>
+    </div>--%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
 </asp:Content>

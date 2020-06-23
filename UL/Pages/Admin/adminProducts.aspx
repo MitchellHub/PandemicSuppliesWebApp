@@ -54,8 +54,9 @@
             <asp:BoundField DataField="ProductDesc" HeaderText="ProductDesc" ItemStyle-Width="" />
             <asp:BoundField DataField="ProductPrice" HeaderText="ProductPrice" ItemStyle-Width="" />
             <asp:BoundField DataField="StockLevel" HeaderText="StockLevel" ItemStyle-Width="" />
-            <asp:BoundField DataField="ImgSource" HeaderText="ImgSource" ItemStyle-Width="" />
+            <%--<asp:BoundField DataField="ImgSource" HeaderText="ImgSource" ItemStyle-Width="" />--%>
             <asp:BoundField DataField="IsActive" HeaderText="IsActive" ItemStyle-Width="" />
+            <%--<asp:BoundField DataField="ProductImage" HeaderText="ProductImage" ItemStyle-Width=""/>--%>
             <asp:ButtonField CommandName="View" ButtonType="Link" Text="Edit Product" />
         </Columns>
     </asp:GridView>
@@ -71,6 +72,9 @@
     <asp:Label runat="server" ID="lblProductID" Text="ProductID: " />
     <asp:Label runat="server" ID="lblProductIDValue" Text=""/><br />
     <br />
+    <asp:Image ID="imgProductImage" runat="server" Height="300px" Width="300px" />
+    <br />
+    <br />
 
     <asp:Label runat="server" ID="lblProductName" Text="ProductName: " />
     <asp:TextBox runat="server" ID="tbxProductName" Text="" Width="500" />
@@ -85,7 +89,7 @@
     <br />
 
     <asp:Label runat="server" ID="lblProductDesc" Text="ProductDesc: " />
-    <asp:TextBox runat="server" ID="tbxProductDesc" Text="" Width="500" />
+    <asp:TextBox runat="server" ID="tbxProductDesc" Width="500" Rows="1" TextMode="MultiLine" />
     <asp:RequiredFieldValidator ID="RequiredFieldValidator3"
         runat="server"
         ErrorMessage="Must enter a product description."
@@ -117,16 +121,31 @@
     <br />
 
     <asp:Label runat="server" ID="lblStockLevel" Text="StockLevel: " />
-    <asp:TextBox runat="server" ID="tbxStockLevel" Text="" Width="500" /><br />
+    <asp:TextBox runat="server" ID="tbxStockLevel" Text="" Width="50" />
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator5"
+        runat="server"
+        ErrorMessage="Must enter a stock level"
+        ControlToValidate="tbxStockLevel"
+        ValidationGroup="ProductValidation"
+        Display="Dynamic"
+        CssClass="input-error_message" />
+    <asp:RegularExpressionValidator ID="RegularExpressionValidator3" 
+        runat="server" 
+        ErrorMessage="Stock Level must be a positive number" 
+        ControlToValidate="tbxStockLevel" 
+        ValidationGroup="ProductValidation" 
+        Display="Dynamic" 
+        CssClass="input-error_message" 
+        ValidationExpression="^[0-9]\d*$" />
     <br />
-
-    <asp:Label runat="server" ID="lblImgSource" Text="Img Source: " />
-    <asp:TextBox runat="server" ID="tbxImgSource" Text="" Width="500" /><br />
     <br />
 
     <asp:Label runat="server" ID="lblIsActive" Text="Active: " />
-    <asp:CheckBox runat="server" ID="cbxIsActive" /><br />
+    <asp:CheckBox runat="server" ID="cbxIsActive" />
     <br />
+    <br />
+
+    
 
     <asp:Button runat="server" ID="btnConfirmEdit" Text="Edit product" OnClick="btnConfirmEdit_Click" CausesValidation="true" ValidationGroup="ProductValidation"/>
 

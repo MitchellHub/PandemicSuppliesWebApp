@@ -26,9 +26,10 @@
         runat="server" 
         ErrorMessage="Value must be a number" 
         ValidationGroup="SearchValidation" 
-        Display="Dynamic"/
+        Display="Dynamic"
         ControlToValidate="tbxSearchBy"
-        CssClass="input-error_message" />
+        CssClass="input-error_message" 
+        ValidationExpression="^[1-9]\d*$" />
     <asp:Button ID="btnSearchBy" runat="server" Text="Search" OnClick="btnSearchBy_Click" ValidationGroup="SearchValidation" CausesValidation="true" />
     <br />
     <br />

@@ -9,7 +9,10 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <p>Sorry, you're trying to access part of the website that you don't have permission for.</p>
+            <p><asp:Label ID="lblFeedback" runat="server" Text="Sorry, there was an error."></asp:Label></p>
+            <br />
+            <br />
+            <asp:HyperLink runat="server" Text="Click here to go back to main page" NavigateUrl="main.aspx" />
         </div>
     </form>
 </body>

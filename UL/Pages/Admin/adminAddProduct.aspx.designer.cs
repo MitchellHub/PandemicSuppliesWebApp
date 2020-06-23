@@ -94,6 +94,15 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
 
         /// <summary>
+        /// RegularExpressionValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
+
+        /// <summary>
         /// lblStockLevel control.
         /// </summary>
         /// <remarks>
@@ -121,6 +130,15 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator4;
 
         /// <summary>
+        /// RegularExpressionValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator3;
+
+        /// <summary>
         /// lblImgSource control.
         /// </summary>
         /// <remarks>
@@ -130,13 +148,13 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin {
         protected global::System.Web.UI.WebControls.Label lblImgSource;
 
         /// <summary>
-        /// tbxImgSource control.
+        /// fupImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxImgSource;
+        protected global::System.Web.UI.WebControls.FileUpload fupImage;
 
         /// <summary>
         /// RequiredFieldValidator5 control.
@@ -191,5 +209,14 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblFeedback;
+
+        /// <summary>
+        /// lblImgFeedback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblImgFeedback;
     }
 }

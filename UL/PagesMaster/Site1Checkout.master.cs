@@ -11,7 +11,7 @@ namespace PandemicSuppliesWebApp.UL.PagesMaster
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["User_ID"] == null)
+            if (Session["User"] == null)
                 Response.Redirect("~/UL/Pages/login.aspx");
         }
     }

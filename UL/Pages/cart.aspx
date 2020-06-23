@@ -12,60 +12,34 @@
         </div>
     </div>
 
-    <%-- Since this page should be generated from the database,
-         each control that relates to a specific product will not have an ID (I think)
-         Therefore I've left out the IDs 
-         I think I will be using something like an asp:literal --%>
-    <%--<asp:Literal ID="litProducts" runat="server"></asp:Literal>--%>
-
-    <div runat="server" ID="divCartWrapper" class="cart-wrapper">
-        <div runat="server" class="cart-item" id="divFirstProduct">
-            <hr class="hr-margin" />
-            <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/product.aspx">
-                <asp:Image runat="server" ImageUrl="../IMG/riot_gas_mask.jpg" CssClass="cart-image" />
-                <asp:Label ID="lblProductTitle" runat="server" Text="Pandemic Supplies Riot Gas Mask Military Grade" CssClass="product-heading cart-heading" />
-            </asp:HyperLink>
-            <div style="float: right">
-                <asp:Label runat="server" Text="$299.99" CssClass="cart-price"/>
-            </div>
-            <div class="cart-quantity-wrapper">
-                <asp:Label runat="server" ID="lblQty" Text="Quantity: " />
-                <asp:DropDownList ID="lstProductQty" runat="server">
-                    <asp:ListItem Selected="true">1</asp:ListItem>
-                    <asp:ListItem>2</asp:ListItem>
-                    <asp:ListItem>3</asp:ListItem>
-                    <asp:ListItem>4</asp:ListItem>
-                </asp:DropDownList>
-                <asp:LinkButton runat="server" OnClick="btnRemove_Click" Text="Remove"/>
-            </div>
-        </div>
-        <div runat="server" class="cart-item">
-            <hr class="hr-margin" />
-            <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/product.aspx">
-                <asp:Image runat="server" ImageUrl="../IMG/pasta.jpg" CssClass="cart-image" />
-                <asp:Label ID="Label1" runat="server" Text="Uncle Bob's Premium Pasta 500g" CssClass="product-heading cart-heading" />
-            </asp:HyperLink>
-            <div style="float: right">
-                <asp:Label runat="server" Text="$10" CssClass="cart-price"/>
-            </div>
-            <div class="cart-quantity-wrapper">
-                <asp:Label runat="server" Text="Quantity: " />
-                <asp:DropDownList runat="server">
-                    <asp:ListItem>1</asp:ListItem>
-                    <asp:ListItem Selected="true">2</asp:ListItem>
-                    <asp:ListItem>3</asp:ListItem>
-                    <asp:ListItem>4</asp:ListItem>
-                    <asp:ListItem>5</asp:ListItem>
-                    <asp:ListItem>6</asp:ListItem>
-                    <asp:ListItem>7</asp:ListItem>
-                </asp:DropDownList>
-                <asp:LinkButton runat="server" OnClick="btnRemove_Click" Text="Remove"/>
-            </div>
-        </div>
+    <div runat="server" id="divCartWrapper" class="cart-wrapper">
+        <asp:ListView ID="listviewCartProducts" runat="server" OnItemDataBound="listviewCartProducts_ItemDataBound" OnItemCommand="listviewCartProducts_ItemCommand">
+            <ItemTemplate>
+                <div runat="server" class="cart-item">
+                    <hr class="hr-margin" />
+                    <asp:HyperLink runat="server" ID="linkProductPage">
+                        <asp:Image runat="server" ID="imgProductImage" CssClass="cart-image" />
+                        <asp:Label ID="lblProductTitle" runat="server" CssClass="product-heading cart-heading"><%#Eval("ProductName")%></asp:Label>
+                    </asp:HyperLink>
+                    <div style="float: right">
+                        <asp:Label runat="server" CssClass="cart-price">$<%#Eval("ProductPrice")%></asp:Label>
+                    </div>
+                    <div class="cart-quantity-wrapper">
+                        <%-- qty bound in codebehind--%>
+                        <asp:Label runat="server" Text="Qty: " />
+                        <asp:Label runat="server" ID="lblProductQty" />
+                        <asp:Label runat="server" Text="|" CssClass="side_margin-1"/>
+                        <%--button command argument set in codebehind--%>
+                        <asp:LinkButton runat="server" Text="Remove" ID="btnRemoveProduct" CommandName="cmdRemoveProduct" CommandArgument='<%#Eval("ProductID")%>'/>
+                    </div>
+                </div>
+                <%--<hr class="hr-margin" />--%>
+            </ItemTemplate>
+        </asp:ListView>
         <hr class="hr-margin" />
     </div>
-    <asp:Label runat="server" ID="lblCartTotalPrice" Text="$319.95" CssClass="cart-price"/>
-    <asp:Label runat="server" ID="lblCartTotal" Text="Total (3 Items)" CssClass="cart-total"/>
+    <asp:Label runat="server" ID="lblCartTotalPrice" CssClass="cart-price"/>
+    <asp:Label runat="server" ID="lblCartTotal" CssClass="cart-total"/>
     <asp:LinkButton runat="server" ID="btnCheckout" Text="Checkout" OnClick="btnCheckout_Click" CssClass="button cart-button"/>
 
 </asp:Content>

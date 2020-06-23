@@ -12,12 +12,12 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            User usrSession = (User) Session["User"];
+            BL.User usrSession = (BL.User) Session["User"];
 
-            if (!usrSession.IsAdmin)   // check user is admin
-            {
-                Response.Redirect("~/UL/Pages/error.aspx");
-            }
+            if (usrSession == null)
+                Response.Redirect("~/UL/Pages/error.aspx?ID=privilegeerror");
+            else if (!usrSession.IsAdmin || usrSession == null)   // check user is admin
+                Response.Redirect("~/UL/Pages/error.aspx?ID=privilegeerror");
         }
     }
 }

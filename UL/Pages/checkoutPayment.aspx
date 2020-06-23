@@ -15,7 +15,7 @@
             <asp:RadioButton runat="server" CssClass="margin-1" GroupName="deliveryAddress"/><asp:Label runat="server" 
                 Text="Patrick Star, 120 Conch Street, Bikini Bottom, 1999, Pacific Ocean"/>
         </div>
-        <asp:LinkButton ID="LinkButton1" runat="server" Text="Add a new address" CssClass="margin-1" OnClick="btnAddDeliveryAddress_Click"/>
+        <asp:LinkButton ID="LinkButton1" runat="server" Text="Add a new address" CssClass="margin-1" OnClick="btnAddDeliveryAddress_Click" CausesValidation="false"/>
     </div>
     <br />
     <%-- Billing address --%>
@@ -51,22 +51,90 @@
                 <div class="input-field">
                     <asp:Label runat="server" Text="Card Number" />
                     <asp:TextBox runat="server" ID="tbxCardNumber" ToolTip="Please enter the card number" CssClass="input-textbox" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" 
+                        runat="server" 
+                        ErrorMessage="Please enter a card number" 
+                        ControlToValidate="tbxCardNumber"
+                        Display="Dynamic"
+                        CssClass="input-error_message" />
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator4"
+                        runat="server"
+                        ErrorMessage="Card number must be a number"
+                        ControlToValidate="tbxCardNumber"
+                        Display="Dynamic"
+                        CssClass="input-error_message"
+                        ValidationExpression="^[0-9]\d*$" />
+                    
                     <br />
+                </div>
+                <div class="input-field">
+                    <asp:Label runat="server" Text="Name on card" />
+                    <asp:TextBox runat="server" ID="tbxName" ToolTip="Please enter a name." CssClass="input-textbox input-textbox_medium" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" 
+                        runat="server" 
+                        ErrorMessage="Please enter the name on the card" 
+                        ControlToValidate="tbxName"
+                        Display="Dynamic"
+                        CssClass="input-error_message" />
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator5"
+                        runat="server"
+                        ErrorMessage="Name on card must be a name"
+                        ControlToValidate="tbxName"
+                        Display="Dynamic"
+                        CssClass="input-error_message"
+                        ValidationExpression="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" />
+                <%--regex sourced from https://www.regextester.com/93648 --%>
                 </div>
                 <div class="input-field">
                     <asp:Label runat="server" Text="Expiry Month" />
                     <asp:TextBox runat="server" ID="tbxExpMonth" ToolTip="Please a valid expiry date" CssClass="input-textbox input-textbox_small" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" 
+                        runat="server" 
+                        ErrorMessage="Please enter an expiry month" 
+                        ControlToValidate="tbxExpMonth"
+                        Display="Dynamic"
+                        CssClass="input-error_message" />
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
+                        runat="server"
+                        ErrorMessage="Expiry month must be a number between 1-12"
+                        ControlToValidate="tbxExpMonth"
+                        Display="Dynamic"
+                        CssClass="input-error_message"
+                        ValidationExpression="\b([1-9]|0[1-9]|1[0-2])\b" />
+
                     <asp:Label runat="server" Text="Expiry Year" />
                     <asp:TextBox runat="server" ID="tbxExpYear" ToolTip="Please a valid expiry date" CssClass="input-textbox input-textbox_small" />
-                    <asp:Label runat="server" Text="Security Code" />
-                    <asp:TextBox runat="server" ID="tbxSecurityCode" ToolTip="Please enter a security code" CssClass="input-textbox input-textbox_small" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" 
+                        runat="server" 
+                        ErrorMessage="Please enter an year" 
+                        ControlToValidate="tbxExpYear"
+                        Display="Dynamic"
+                        CssClass="input-error_message" />
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2"
+                        runat="server"
+                        ErrorMessage="Expiry year must be a number"
+                        ControlToValidate="tbxExpYear"
+                        Display="Dynamic"
+                        CssClass="input-error_message"
+                        ValidationExpression="(\d{4})" />
+                    
+                    <asp:Label runat="server" Text="CVC" />
+                    <asp:TextBox runat="server" ID="tbxCVC" ToolTip="Please enter a security code" CssClass="input-textbox input-textbox_small" />
+                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" 
+                        runat="server" 
+                        ErrorMessage="Please enter a CVC" 
+                        ControlToValidate="tbxCVC"
+                        Display="Dynamic"
+                        CssClass="input-error_message" />
+                    <asp:RegularExpressionValidator ID="RegularExpressionValidator3"
+                        runat="server"
+                        ErrorMessage="Security code must be a number"
+                        ControlToValidate="tbxCVC"
+                        Display="Dynamic"
+                        CssClass="input-error_message"
+                        ValidationExpression="^[0-9]\d*$" />
+                    
                     <br />
-                </div>
-                <div class="input-field">
-                    <asp:Label runat="server" Text="First Name" />
-                    <asp:TextBox runat="server" ID="tbxFirstName" ToolTip="Please enter a name." CssClass="input-textbox input-textbox_medium" />
-                    <asp:Label runat="server" Text="Last Name" />
-                    <asp:TextBox runat="server" ID="tbxLastName" ToolTip="Please enter a name." CssClass="input-textbox input-textbox_medium" />
                 </div>
             </div>
         </div>
@@ -135,7 +203,12 @@
         <br />
     </div>
     <br />
-    <asp:LinkButton runat="server" ID="btnConfirm" Text="Confirm and pay" OnClick="btnConfirm_Click" CssClass="button cart-button" />
+    <asp:Label runat="server" ID="lblPaymentFeedback" Forecolor="Green" Visible="false"/>
+    <br />
+    <br />
+    <asp:LinkButton runat="server" ID="btnConfirm" Text="Confirm and pay" OnClick="btnConfirm_Click" CssClass="button cart-button" CausesValidation="true"/>
+    <asp:LinkButton runat="server" ID="btnCancel" Text="Cancel" CssClass="button button-cancel" CausesValidation="false" 
+            OnClick="btnCancel_Click" />
     <br />
     <br />
     <br />

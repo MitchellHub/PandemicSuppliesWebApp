@@ -130,6 +130,15 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin {
         protected global::System.Web.UI.WebControls.Label lblProductIDValue;
 
         /// <summary>
+        /// imgProductImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgProductImage;
+
+        /// <summary>
         /// lblProductName control.
         /// </summary>
         /// <remarks>
@@ -238,22 +247,22 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin {
         protected global::System.Web.UI.WebControls.TextBox tbxStockLevel;
 
         /// <summary>
-        /// lblImgSource control.
+        /// RequiredFieldValidator5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblImgSource;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
 
         /// <summary>
-        /// tbxImgSource control.
+        /// RegularExpressionValidator3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbxImgSource;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator3;
 
         /// <summary>
         /// lblIsActive control.

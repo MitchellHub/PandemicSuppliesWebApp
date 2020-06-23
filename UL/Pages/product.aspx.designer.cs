@@ -7,12 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PandemicSuppliesWebApp.UL.Pages
-{
+namespace PandemicSuppliesWebApp.UL.Pages {
 
 
-    public partial class product
-    {
+    public partial class product {
+
+        /// <summary>
+        /// imgProductImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgProductImage;
 
         /// <summary>
         /// lblProductTitle control.
@@ -31,15 +38,6 @@ namespace PandemicSuppliesWebApp.UL.Pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblProductPrice;
-
-        /// <summary>
-        /// lblProductPriceOld control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProductPriceOld;
 
         /// <summary>
         /// lblProductStockStatus control.
@@ -67,24 +65,6 @@ namespace PandemicSuppliesWebApp.UL.Pages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblProductDescription;
-
-        /// <summary>
-        /// lblQty control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblQty;
-
-        /// <summary>
-        /// lstQty control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList lstQty;
 
         /// <summary>
         /// btnAddToCart control.

@@ -7,11 +7,11 @@ using System.Web;
 
 namespace PandemicSuppliesWebApp.DAL {
     public class DALProductAccess {
-        public static int addProductToDatabaseReturnID(string _strProdName, string _strProdDesc, decimal _decProductPrice, int _intStockLevel, bool _boolIsActive, string _strImgSource)
+        public static int addProductToDatabaseReturnID(string _strProdName, string _strProdDesc, decimal _decProductPrice, int _intStockLevel, bool _boolIsActive, byte[] _bytImgArray)
         // method inserts a product into the Products table using a stored procedure
         {
             SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
-            SqlCommand cmdAddProduct = new SqlCommand("Products_UspInsertProduct", conn);
+            SqlCommand cmdAddProduct = new SqlCommand("Products_UspInsertProductWithImage", conn);
             cmdAddProduct.CommandType = CommandType.StoredProcedure;
 
             int intProductID = 0;
@@ -22,7 +22,7 @@ namespace PandemicSuppliesWebApp.DAL {
                 new SqlParameter("@ProductDesc", _strProdDesc),
                 new SqlParameter("@ProductPrice", _decProductPrice),
                 new SqlParameter("@StockLevel", _intStockLevel),
-                new SqlParameter("@ImgSource", _strImgSource),
+                new SqlParameter("@ProductImage", _bytImgArray),
                 new SqlParameter("@IsActive", _boolIsActive),
                 new SqlParameter("@ProductID", intProductID)
             };
@@ -31,10 +31,11 @@ namespace PandemicSuppliesWebApp.DAL {
 
             try
             {
-                System.Diagnostics.Debug.WriteLine("start try");
+                System.Diagnostics.Debug.WriteLine("open connection");
                 conn.Open();
                 cmdAddProduct.ExecuteNonQuery();
                 intProductID = (int)cmdAddProduct.Parameters["@ProductID"].Value;
+                System.Diagnostics.Debug.WriteLine("query executed");
             }
             catch (Exception ex)
             {
@@ -47,7 +48,7 @@ namespace PandemicSuppliesWebApp.DAL {
             return intProductID;
         }
 
-        public static void updateProductDataInDatabase(int _intProductID, string _strProductName, string _strProductDesc, decimal _decProductPrice, int _intStockLevel, string _strImgSource, bool _boolIsActive)
+        public static void updateProductDataInDatabase(int _intProductID, string _strProductName, string _strProductDesc, decimal _decProductPrice, int _intStockLevel, bool _boolIsActive)
             // method updates a product in the db using a stored procedure
         {
             SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
@@ -62,7 +63,6 @@ namespace PandemicSuppliesWebApp.DAL {
                 new SqlParameter("@ProductDesc", _strProductDesc),
                 new SqlParameter("@ProductPrice", _decProductPrice),
                 new SqlParameter("@StockLevel", _intStockLevel),
-                new SqlParameter("@ImgSource", _strImgSource),
                 new SqlParameter("@IsActive", _boolIsActive)
             };
             cmdUpdateProductQuery.Parameters.AddRange(parameters);
@@ -82,14 +82,14 @@ namespace PandemicSuppliesWebApp.DAL {
             }
         }
 
-        public static DataTable dtbReturnProducts(int _intSearchID)
+        public static DataTable dtbSelectProducts(int _intSearchID)
         // method returns all products if searchID == 0, or returns product with matching ProductID
         {
             DataTable dtbProducts = new DataTable();
             SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
             SqlCommand cmdProductsQuery;
 
-            if (_intSearchID == 0)  // if search id 0, return all users
+            if (_intSearchID == 0)  // if search id 0, return all products
             {
                 cmdProductsQuery = new SqlCommand("Products_UspReturnProducts", conn);
                 cmdProductsQuery.CommandType = CommandType.StoredProcedure;
@@ -106,7 +106,7 @@ namespace PandemicSuppliesWebApp.DAL {
                 using (SqlDataAdapter da = new SqlDataAdapter(cmdProductsQuery))
                 {
                     da.Fill(dtbProducts);
-                    System.Diagnostics.Debug.WriteLine("fill");
+                    System.Diagnostics.Debug.WriteLine("fill with products");
                 }
             }
             catch (Exception ex)
@@ -118,6 +118,91 @@ namespace PandemicSuppliesWebApp.DAL {
                 conn.Close();
             }
             return dtbProducts;
+        }
+
+        public static DataTable dtbReturnActiveProducts()
+            // method returns all active products 
+        {
+            DataTable dtbProducts = new DataTable();
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
+            SqlCommand cmdProductsQuery;
+
+            cmdProductsQuery = new SqlCommand("Products_UspReturnActiveProducts", conn);
+            cmdProductsQuery.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                conn.Open();
+                using (SqlDataAdapter da = new SqlDataAdapter(cmdProductsQuery))
+                {
+                    da.Fill(dtbProducts);
+                    System.Diagnostics.Debug.WriteLine("fill with products");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return dtbProducts;
+        }
+
+        public static DataTable dtbSelectActiveAndInStockProducts()
+            // method returns all active and stocklevel > 0 products
+        {
+            DataTable dtbProducts = new DataTable();
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
+            SqlCommand cmdProductsQuery;
+
+            cmdProductsQuery = new SqlCommand("Products_UspReturnActiveAndInStockProducts", conn);
+            cmdProductsQuery.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                conn.Open();
+                using (SqlDataAdapter da = new SqlDataAdapter(cmdProductsQuery))
+                {
+                    da.Fill(dtbProducts);
+                    System.Diagnostics.Debug.WriteLine("fill with products");
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return dtbProducts;
+        }
+        public static byte[] bytReturnProductImage(int _intProductID)
+            // method returns the byte array of a product's image, by product ID
+        {
+            byte[] bytImageArray = null;
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
+            SqlCommand cmdReturnImage = new SqlCommand("Products_UspReturnImageById", conn);    // sql command
+            cmdReturnImage.CommandType = CommandType.StoredProcedure;                           // command type
+            cmdReturnImage.Parameters.Add(new SqlParameter("@ProductID", _intProductID));       // add ID param
+
+            try
+            {
+                conn.Open();
+                bytImageArray = (byte[])cmdReturnImage.ExecuteScalar(); // cast return value to byte[] and assign
+                System.Diagnostics.Debug.WriteLine("retrieve image");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex);
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return bytImageArray;
         }
     }
 }

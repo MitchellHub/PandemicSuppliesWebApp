@@ -6,19 +6,19 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="added_to_cart-wrapper">
         <div class="flex-item">
-            <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/product.aspx">
-            <asp:Image runat="server" ImageUrl="../IMG/riot_gas_mask.jpg" CssClass="image-added_to_cart" />
+            <asp:HyperLink runat="server" ID="linkProductPage">
+                <asp:Image runat="server" ID="imgProductImage" CssClass="image-added_to_cart" />
             </asp:HyperLink>
         </div>
         <div class="flex-item">
-            <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/product.aspx">
-            <asp:Label ID="lblProductTitle" runat="server" Text="Pandemic Supplies Riot Gas Mask Military Grade" CssClass="product-heading" />
+            <asp:HyperLink runat="server" ID="linkProductPageTitle">
+                <asp:Label ID="lblProductTitle" runat="server" CssClass="product-heading" />
             </asp:HyperLink>
             <br />
             <asp:Label ID="lblAddedToCart" runat="server" Text="Successfully added to cart" CssClass="product-in_stock" />
             <br />
-            <asp:Label ID="lblCartSubTotal" runat="server" Text="Cart Subtotal (3 Items): " CssClass="added_to_cart-subtotal" />
-            <asp:Label ID="lblCartSubTotalPrice" runat="server" Text="$319.95" CssClass="added_to_cart-subtotal_price" />
+            <asp:Label ID="lblCartSubTotal" runat="server" CssClass="added_to_cart-subtotal" />
+            <asp:Label ID="lblCartSubTotalPrice" runat="server" CssClass="added_to_cart-subtotal_price" />
         </div>
         <div class="flex-item flex-item-product_page_buttons">
             <asp:Button ID="btnCart" runat="server" Text="Cart" CssClass="button added_to_cart-button" OnClick="btnCart_Click" />

@@ -12,10 +12,10 @@ namespace PandemicSuppliesWebApp.BL {
             // convert to int
             int intSearchID = Convert.ToInt32(_strSearchID);
 
-            return DAL.DALProductAccess.dtbReturnProducts(intSearchID);
+            return DAL.DALProductAccess.dtbSelectProducts(intSearchID);
         }
 
-        public static void updateProductData(string _strProductID, string _strProductName, string _strProductDesc, string _strProductPrice, string _strStockLevel, string _strImgSource, bool _boolIsActive)
+        public static void updateProductData(string _strProductID, string _strProductName, string _strProductDesc, string _strProductPrice, string _strStockLevel, bool _boolIsActive)
             // method sends product data to lower level
         {
             int intProductID = int.Parse(_strProductID);
@@ -23,10 +23,16 @@ namespace PandemicSuppliesWebApp.BL {
             string strProductDesc = _strProductDesc.ToString();
             decimal decProductPrice = decimal.Parse(_strProductPrice);
             int intStockLevel = int.Parse(_strStockLevel);
-            string strImgSource = _strImgSource.ToString();
             bool boolIsActive = (bool) _boolIsActive;
 
-            DAL.DALProductAccess.updateProductDataInDatabase(intProductID, strProductName, strProductDesc, decProductPrice, intStockLevel, strImgSource, boolIsActive);
+            DAL.DALProductAccess.updateProductDataInDatabase(intProductID, strProductName, strProductDesc, decProductPrice, intStockLevel, boolIsActive);
+        }
+
+        public static byte[] bytReturnProductImage(int _intProductID)
+        {
+            int intSearchID = Convert.ToInt32(_intProductID);
+
+            return DAL.DALProductAccess.bytReturnProductImage(intSearchID);
         }
     }
 }

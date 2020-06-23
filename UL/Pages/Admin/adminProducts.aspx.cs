@@ -9,8 +9,12 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            fillGridViewWithAllProducts();
-            resetControls();
+            lblEditProductFeedback.Text = "";
+            if (!IsPostBack)
+            {
+                fillGridViewWithAllProducts();
+                resetControls();
+            }
         }
 
         protected void btnSearchBy_Click(object sender, EventArgs e)
@@ -63,7 +67,12 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
                 tbxProductDesc.Text = row.Cells[2].Text;
                 tbxProductPrice.Text = row.Cells[3].Text;
                 tbxStockLevel.Text = row.Cells[4].Text;
-                tbxImgSource.Text = row.Cells[5].Text;
+
+                // Grab image byte array, convert to string, set as image url
+                byte[] bytImageArray = BL.BLAdminProducts.bytReturnProductImage(Convert.ToInt32(row.Cells[0].Text));
+                string strBase64 = Convert.ToBase64String(bytImageArray);
+                imgProductImage.ImageUrl = "data:Image/jpg;base64, " + strBase64;
+                lblEditProductFeedback.Visible = true;
 
                 if (row.Cells[6].Text == "True")
                     cbxIsActive.Checked = true;
@@ -73,6 +82,7 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
         }
 
         protected void btnConfirmEdit_Click(object sender, EventArgs e)
+            // method UPDATES a product
         {
             if (lblProductIDValue.Text == "")
             {
@@ -82,21 +92,24 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
             } 
             else
             {
-                lblEditProductFeedback.Text = "Product Edited";
-                lblEditProductFeedback.ForeColor = Color.Green;
-                lblEditProductFeedback.Visible = true;
-
                 string strProductID = lblProductIDValue.Text.ToString();
                 string strProductName = tbxProductName.Text.ToString();
                 string strProductDesc = tbxProductDesc.Text.ToString();
                 string strProductPrice = tbxProductPrice.Text.ToString();
                 string strStockLevel = tbxStockLevel.Text.ToString();
-                string strImgSource = tbxImgSource.Text.ToString();
+                // string strImgSource = "test";
                 bool boolIsActive = cbxIsActive.Checked;
 
                 try
                 {
-                    BL.BLAdminProducts.updateProductData(strProductID, strProductName, strProductDesc, strProductPrice, strStockLevel, strImgSource, boolIsActive);
+                    BL.BLAdminProducts.updateProductData(strProductID, strProductName, strProductDesc, strProductPrice, strStockLevel, boolIsActive);
+
+                    fillGridViewWithAllProducts();
+                    resetControls();
+
+                    lblEditProductFeedback.Text = "Product Edited";
+                    lblEditProductFeedback.ForeColor = Color.Green;
+                    lblEditProductFeedback.Visible = true;
                 }
                 catch
                 {
@@ -110,6 +123,7 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             resetControls();
+
         }
 
         protected void resetControls()
@@ -123,7 +137,7 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
             tbxProductDesc.Text = "";
             tbxProductPrice.Text = "";
             tbxStockLevel.Text = "";
-            tbxImgSource.Text = "";
+            // tbxImgSource.Text = "";
         }
     }
 }

@@ -5,9 +5,9 @@ using System.Web;
 
 namespace PandemicSuppliesWebApp.BL {
     public class BLLogin {
-        public static DAL.User usrLoginUser(string _strEmail, string _strPassword)
+        public static BL.User usrLoginUser(string _strEmail, string _strPassword)
         {
-            // check strings aren't too long
+            // check string length
             string strEm = _strEmail.ToString();
             string strPwd = _strPassword.ToString();
 

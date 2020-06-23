@@ -7,12 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PandemicSuppliesWebApp.UL.Pages
-{
+namespace PandemicSuppliesWebApp.UL.Pages {
 
 
-    public partial class cart
-    {
+    public partial class cart {
 
         /// <summary>
         /// divCartWrapper control.
@@ -24,49 +22,13 @@ namespace PandemicSuppliesWebApp.UL.Pages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCartWrapper;
 
         /// <summary>
-        /// divFirstProduct control.
+        /// listviewCartProducts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFirstProduct;
-
-        /// <summary>
-        /// lblProductTitle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProductTitle;
-
-        /// <summary>
-        /// lblQty control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblQty;
-
-        /// <summary>
-        /// lstProductQty control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList lstProductQty;
-
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.ListView listviewCartProducts;
 
         /// <summary>
         /// lblCartTotalPrice control.

@@ -25,7 +25,12 @@
                     <asp:TextBox ID="tbxName" runat="server" ToolTip="Please enter your name." CssClass="input-textbox"></asp:TextBox>
                     <br />
                     <span class="input-error_message">
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="tbxName" ErrorMessage="Please enter your name." Display="Dynamic"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" 
+                            runat="server" 
+                            ControlToValidate="tbxName" 
+                            ErrorMessage="Please enter your name." 
+                            Display="Dynamic"></asp:RequiredFieldValidator>
+                        <%--not validated as a real name, as i don't care what the user enters as their name--%>
                     </span>
                 </div>
 
@@ -35,10 +40,19 @@
                     <asp:TextBox ID="tbxEmail" runat="server" ToolTip="Please enter a valid email." CssClass="input-textbox"></asp:TextBox>
                     <br />
                     <span class="input-error_message">
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbxEmail" Display="Dynamic" ErrorMessage="Please enter a registered email."></asp:RequiredFieldValidator>
-                        <%-- trigger event for leaving textbox --%>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" 
+                            runat="server" 
+                            ControlToValidate="tbxEmail" 
+                            Display="Dynamic" 
+                            ErrorMessage="Please enter a registered email." />
                         <%-- Email validator: 1 @ >2 . >2 --%>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ControlToValidate="tbxEmail" ErrorMessage="Please enter a valid email." Display="Dynamic" SetFocusOnError="true"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" 
+                            runat="server" 
+                            ValidationExpression="\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
+                            ControlToValidate="tbxEmail" 
+                            ErrorMessage="Please enter a valid email." 
+                            Display="Dynamic" 
+                            SetFocusOnError="true"></asp:RegularExpressionValidator>
                     </span>
                 </div>
 
@@ -47,9 +61,17 @@
                     <label for="tbxPassword1" class="input-label">Password*</label>
                     <asp:TextBox ID="tbxPassword1" runat="server" TextMode="Password" ToolTip="Please enter your password." CssClass="input-textbox"></asp:TextBox>
                     <span class="input-error_message">
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Password Required." ControlToValidate="tbxPassword1" ></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" 
+                            runat="server" 
+                            ErrorMessage="Password Required." 
+                            ControlToValidate="tbxPassword1" ></asp:RequiredFieldValidator>
                         <br />
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ControlToValidate="tbxPassword1" Display="Dynamic" ErrorMessage="Minimum of 6 characters." ValidationExpression="^[\s\S]{6,}$"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator2" 
+                            runat="server" 
+                            ControlToValidate="tbxPassword1" 
+                            Display="Dynamic" 
+                            ErrorMessage="Minimum of 6 characters." 
+                            ValidationExpression="^[\s\S]{6,}$"></asp:RegularExpressionValidator>
                     </span>
                 </div>
 
@@ -59,14 +81,27 @@
                     <asp:TextBox ID="tbxPassword2" runat="server" TextMode="Password" ToolTip="Please re-enter your password." CssClass="input-textbox"></asp:TextBox>
                     <br />
                     <span class="input-error_message">
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please type your password again." ControlToValidate="tbxPassword2" SetFocusOnError="true" ></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" 
+                            runat="server" 
+                            ErrorMessage="Please type your password again." 
+                            ControlToValidate="tbxPassword2" 
+                            SetFocusOnError="true" ></asp:RequiredFieldValidator>
                         <br />
-                        <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="These passwords don't match." ControlToCompare="tbxPassword1" ControlToValidate="tbxPassword2" SetFocusOnError="true" ></asp:CompareValidator>
+                        <asp:CompareValidator ID="CompareValidator1" 
+                            runat="server" 
+                            ErrorMessage="These passwords don't match." 
+                            ControlToCompare="tbxPassword1" 
+                            ControlToValidate="tbxPassword2" 
+                            SetFocusOnError="true" ></asp:CompareValidator>
                     </span>
                 </div>
 
                 <%-- Register Button --%>
-                <asp:LinkButton ID="btnRegister" runat="server" CausesValidation="true" OnClick="btnRegister_Click" CssClass="button">Register</asp:LinkButton>
+                <asp:LinkButton ID="btnRegister" 
+                    runat="server" 
+                    CausesValidation="true" 
+                    OnClick="btnRegister_Click" 
+                    CssClass="button">Register</asp:LinkButton>
                 <br /><br />
                 <span class="input-helper_text">
                         Already got an account?<br />

@@ -7,12 +7,37 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PandemicSuppliesWebApp.UL.Pages
-{
+namespace PandemicSuppliesWebApp.UL.Pages {
 
 
-    public partial class addedToCart
-    {
+    public partial class addedToCart {
+
+        /// <summary>
+        /// linkProductPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink linkProductPage;
+
+        /// <summary>
+        /// imgProductImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgProductImage;
+
+        /// <summary>
+        /// linkProductPageTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink linkProductPageTitle;
 
         /// <summary>
         /// lblProductTitle control.

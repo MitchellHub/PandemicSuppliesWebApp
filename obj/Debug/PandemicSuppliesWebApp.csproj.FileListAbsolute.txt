@@ -116,3 +116,5 @@ C:\Projects\c#\PandemicSuppliesWebApp\PandemicSuppliesWebApp\obj\Debug\PandemicS
 C:\Projects\c#\PandemicSuppliesWebApp\PandemicSuppliesWebApp\obj\Debug\PandemicSuppliesWebApp.csproj.CopyComplete
 C:\Projects\c#\PandemicSuppliesWebApp\PandemicSuppliesWebApp\obj\Debug\PandemicSuppliesWebApp.dll
 C:\Projects\c#\PandemicSuppliesWebApp\PandemicSuppliesWebApp\obj\Debug\PandemicSuppliesWebApp.pdb
+C:\Projects\c#\PandemicSuppliesWebApp\PandemicSuppliesWebApp\bin\Microsoft.AspNet.FriendlyUrls.dll
+C:\Projects\c#\PandemicSuppliesWebApp\PandemicSuppliesWebApp\bin\Microsoft.AspNet.FriendlyUrls.xml

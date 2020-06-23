@@ -13,7 +13,7 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="tbxName" 
                     Display="Dynamic" ErrorMessage="Please enter a name to be billed."></asp:RequiredFieldValidator>
                 <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator3" 
-                    ValidationExpression="^[a-z ,.'-]{1,250}$" 
+                    ValidationExpression="^[a-zA-Z ,.'-]{1,250}$" 
                     ControlToValidate="tbxName" ErrorMessage="Please enter a name smaller than 250 characters" Display="Dynamic" />
             </span>
         </div>

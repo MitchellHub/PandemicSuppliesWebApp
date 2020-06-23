@@ -17,33 +17,34 @@ namespace PandemicSuppliesWebApp.UL.Pages
 
         protected void btnRegister_Click(object sender, EventArgs e)
         {
-            string strEmail = Convert.ToString(tbxEmail.Text);
-            string strName = Convert.ToString(tbxName.Text);
-            string strAEmail = "email@email.com";
-            string strAAdminEmail = "admin@email.com";
+            string strEmail = tbxEmail.Text.ToString();
+            string strName = tbxName.Text.ToString();
+            string strPassword = tbxPassword1.Text.ToString();
 
-            if (strEmail == strAEmail || strEmail == strAAdminEmail) // query database to check email isn't taken
+            int intReturnValue = -3;   // -3 for error contacting server
+            try
             {
-                lblFeedback.Visible = true;
-                lblFeedback.Text = "Sorry, an account is already registered with that email.";
-                linkResetPwd.Visible = true;
+                intReturnValue = BL.BLRegister.intRegisterUser(strEmail, strName, strPassword);
             }
-            // else if (admin email entered) {}
-            else
+            catch (Exception ex)
             {
-                // create new user in database
-                Session["User_ID"] = 3;
-                Session["User_Name"] = strName;
-                // register();
-                Response.Redirect("account.aspx");
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                if (intReturnValue > 0)
+                {
+                    Response.Redirect("registerSuccess.aspx");
+                } else if (intReturnValue == -1)
+                {
+                    lblFeedback.Text = "Sorry, that email is already taken.";
+                    lblFeedback.Visible = true;
+                } else if (intReturnValue == -2 || intReturnValue == -3)  // server/db error
+                {
+                    lblFeedback.Text = "Sorry, there was an error contacting the server.";
+                    lblFeedback.Visible = true;
+                }
             }
         }
-
-        /*
-        register()
-        {
-            // send OTP to email?
-        }
-        */
     }
 }

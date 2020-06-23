@@ -4,37 +4,30 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
+    <%--product values assigned from codebehind--%>
     <div class="flex-wrapper">
         <div class="flex-item flex-item-product_page-image">
-            <asp:Image runat="server" ImageUrl="../IMG/riot_gas_mask.jpg" CssClass="image-product_details" />
+            <asp:Image runat="server" ID="imgProductImage" CssClass="image-product_details" />
         </div>
         <div class="flex-item flex-item-product_page-details">
             <h1 class="product_page-heading">
-                <asp:Label runat="server" ID="lblProductTitle" Text="Pandemic Supplies Riot Gas Mask Military Grade" />
+                <asp:Label runat="server" ID="lblProductTitle"/>
             </h1>
             <hr class="hr-margin" />
             <p class="product_page_price">
-                <span class=""><asp:Label runat="server" ID="lblProductPrice" Text="$299.95" /></span>
-                <span class="product_page_price-old"><asp:Label runat="server" ID="lblProductPriceOld" Text="$400.00" /></span>
+                <asp:Label runat="server" ID="lblProductPrice" />
+                <br />
+                <br />
+                <%--<span class="product_page_price-old"><asp:Label runat="server" ID="lblProductPriceOld" Text="$not assigned" /></span>--%>
             </p>
             <p>
-                <span class="product-in_stock">
-                    <asp:Label runat="server" ID="lblProductStockStatus" Text="In-Stock!" /> 
-                    <asp:Label runat="server" ID="lblProductQuantityAvailable" Text="(4) Available" />
-                </span>
+                <asp:Label runat="server" ID="lblProductStockStatus"/> 
+                <asp:Label runat="server" ID="lblProductQuantityAvailable" />
             </p>
             <hr class="hr-margin"/>
-            <p><asp:Label runat="server" ID="lblProductDescription" 
-                Text="Genuine military-grade gas mask. Riot mask included."/></p>
+            <p><asp:Label runat="server" ID="lblProductDescription"/></p>
             <br />
-            <asp:Label runat="server" ID="lblQty" Text="Quantity: " />
-            <asp:DropDownList ID="lstQty" runat="server">
-                <asp:ListItem Selected="true">1</asp:ListItem>
-                <asp:ListItem>2</asp:ListItem>
-                <asp:ListItem>3</asp:ListItem>
-                <asp:ListItem>4</asp:ListItem>
-            </asp:DropDownList>
-            <asp:Button ID="btnAddToCart" runat="server" Text="Add to Cart" CssClass="button product_page-button" OnClick="btnAddToCart_Click"/>
+            <asp:Button ID="btnAddToCart" runat="server" Text="Add to Cart" CssClass="button product_page-button" OnClick="btnAddToCart_Click" Visible="false"/>
         </div>
     </div>
     <hr />

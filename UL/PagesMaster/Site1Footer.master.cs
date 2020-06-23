@@ -18,12 +18,10 @@ namespace PandemicSuppliesWebApp.UL.PagesMaster
             cph.Page.Form.DefaultButton = btnSearch.UniqueID;
 
             // grab the session variable
-            User usrSession = (User) Session["User"];
+            BL.User usrSession = (BL.User) Session["User"];
 
-            //string strUserID = Convert.ToString(Session["User_ID"]);
-            //string strUserName = Convert.ToString(Session["User_Name"]);
-
-            lblCartStock.Text = "3";
+            // set card number
+            
 
             if (usrSession != null)     // if user is logged in
             {
@@ -33,11 +31,18 @@ namespace PandemicSuppliesWebApp.UL.PagesMaster
                 else
                 {
                     linkAccount.Text = "Hi, " + usrSession.Name.ToString();
-                    lblCartStock.Text = "3";
                     linkOrders.NavigateUrl = "~/UL/Pages/orders.aspx";
                     linkAccount.NavigateUrl = "~/UL/Pages/account.aspx";
-                    // maybe format url with account.aspx?UserID={0}}
 
+                    // set cart number
+                    try
+                    {
+                        lblCartStock.Text = BL.BLCart.intCartTotalProducts(usrSession.UserID).ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        lblCartStock.Text = "";
+                    }
                 }
             } 
             else                                // if user is not logged in/user session == null
