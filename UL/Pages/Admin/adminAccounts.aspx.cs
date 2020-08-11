@@ -7,6 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Security.Cryptography;
 using System.Drawing;
+using System.Configuration;
 
 namespace PandemicSuppliesWebApp.UL.Pages.Admin
 {
@@ -14,8 +15,16 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Request.IsSecureConnection)
+            {
+                string url = ConfigurationManager.AppSettings["SecurePath"] + "adminAccounts.aspx";
+                Response.Redirect(url);
+            }
             if (!IsPostBack)
+            {
                 fillGridViewWithAllAccounts();
+            }
+
         }
 
         // ********** ********** ********** Buttons ********** ********** **********  //
@@ -93,6 +102,18 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
             // Display Invoices Label
             lblInvoiceGridViewFeedback.Visible = true;
             lblInvoiceGridViewFeedback.Text = "Showing invoices for " + lblUserIDValue.Text;
+
+            try
+            {
+                DataTable dtbInvoices = BL.BLAdminAccounts.dtbInvoices(Convert.ToInt32(lblUserIDValue.Text));
+                gvInvoices.DataSource = dtbInvoices;
+                gvInvoices.DataBind();
+                gvInvoices.Visible = true;
+            }
+            catch (Exception ex)
+            {
+                lblInvoiceGridViewFeedback.Text = ex.ToString();
+            }
         }
 
         protected void gvInvoiceProducts_RowCommand(object sender, GridViewCommandEventArgs e)

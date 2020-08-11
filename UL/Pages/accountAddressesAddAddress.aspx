@@ -37,7 +37,7 @@
             <asp:TextBox runat="server" ID="tbxUnitNo" ToolTip="Please enter a unit number" CssClass="input-textbox" />
             <span class="input-error_message">
                 <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator4" 
-                    ValidationExpression="\d" 
+                    ValidationExpression="\d{1,10}" 
                     ControlToValidate="tbxUnitNo" ErrorMessage="Please enter a number." Display="Dynamic" />
             </span>
         </div>
@@ -61,7 +61,7 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="tbxStreet" 
                     Display="Dynamic" ErrorMessage="Please enter a street name." />
                 <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator6" 
-                    ValidationExpression="^[a-z ,.'-]{1,250}$" 
+                    ValidationExpression="^[a-zA-Z ,.'-]{1,250}$" 
                     ControlToValidate="tbxStreet" ErrorMessage="Please enter a street name smaller than 250 characters." Display="Dynamic" />
             </span>
         </div>
@@ -73,7 +73,7 @@
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="tbxSuburb" 
                     Display="Dynamic" ErrorMessage="Please enter a suburb." />
                 <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator7" 
-                    ValidationExpression="^[a-z ,.'-]{1,250}$" 
+                    ValidationExpression="^[a-zA-Z  ,.'-]{1,250}$" 
                     ControlToValidate="tbxSuburb" ErrorMessage="Please enter a suburb name smaller than 250 characters" Display="Dynamic" />
             </span>
         </div>

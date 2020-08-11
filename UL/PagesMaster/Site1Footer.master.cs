@@ -37,7 +37,11 @@ namespace PandemicSuppliesWebApp.UL.PagesMaster
                     // set cart number
                     try
                     {
-                        lblCartStock.Text = BL.BLCart.intCartTotalProducts(usrSession.UserID).ToString();
+                        int intCartStock = (int) BL.BLCart.intCartTotalProducts(usrSession.UserID);
+                        if (intCartStock > 0)
+                            lblCartStock.Text = intCartStock.ToString();
+                        else
+                            lblCartStock.Text = "";
                     }
                     catch (Exception ex)
                     {

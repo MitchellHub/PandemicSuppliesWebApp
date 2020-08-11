@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -20,14 +21,15 @@ namespace PandemicSuppliesWebApp.UL.Pages {
                 }
                 catch
                 {
-                    Response.Redirect("error.aspx?ID=servererror");
+                    string url = ConfigurationManager.AppSettings["UnsecurePath"] + "error.aspx?ID=servererror";
+                    Response.Redirect(url);
                 }
                 
             }
         }
 
         protected void listviewProducts_DataBound(object sender, ListViewItemEventArgs e)
-            // metthod bounds urls to proper values by finding rowViw + associated sql values
+            // method bounds urls to proper values by finding rowViw + associated sql values
         {
             if (e.Item.ItemType == ListViewItemType.DataItem)
             {

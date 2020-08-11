@@ -82,5 +82,62 @@ namespace PandemicSuppliesWebApp.DAL {
                 conn.Close();
             }
         }
+
+        public static DataTable dtbSelectUserByID(int _intUserID)
+        {
+            int intUserID = Convert.ToInt32(_intUserID);
+            var dtbReturn = new DataTable();
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
+
+            SqlCommand cmdSelectUser = new SqlCommand("Users_UspReturnUserByID", conn);
+            cmdSelectUser.CommandType = CommandType.StoredProcedure;
+            cmdSelectUser.Parameters.Add(new SqlParameter("@UserID", _intUserID));
+
+            try
+            {
+                conn.Open();
+                using (SqlDataAdapter da = new SqlDataAdapter(cmdSelectUser))
+                {
+                    da.Fill(dtbReturn);
+                    System.Diagnostics.Debug.WriteLine("grab user");
+                }
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+                throw new DataAccessLayerException();
+            }
+            finally
+            {
+                conn.Close();
+            }
+            return dtbReturn;
+        }
+
+        public static void updateUserName(string _strNewName, int _intUserID)
+        {
+            int intUserID = Convert.ToInt32(_intUserID);
+            string strNewName = _strNewName.ToString();
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
+
+            SqlCommand cmdUpdateName = new SqlCommand("Users_UspUpdateName", conn);
+            cmdUpdateName.CommandType = CommandType.StoredProcedure;
+            cmdUpdateName.Parameters.Add(new SqlParameter("@UserID", intUserID));
+            cmdUpdateName.Parameters.Add(new SqlParameter("@FirstName", strNewName));
+
+            try
+            {
+                conn.Open();
+                cmdUpdateName.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw new DataAccessLayerException();
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
     }
 }

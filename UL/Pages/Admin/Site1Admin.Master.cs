@@ -1,6 +1,7 @@
 ﻿using PandemicSuppliesWebApp.DAL;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -14,9 +15,7 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
         {
             BL.User usrSession = (BL.User) Session["User"];
 
-            if (usrSession == null)
-                Response.Redirect("~/UL/Pages/error.aspx?ID=privilegeerror");
-            else if (!usrSession.IsAdmin || usrSession == null)   // check user is admin
+            if (!usrSession.IsAdmin || usrSession == null)   // check user is admin
                 Response.Redirect("~/UL/Pages/error.aspx?ID=privilegeerror");
         }
     }

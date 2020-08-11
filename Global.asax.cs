@@ -14,5 +14,9 @@ namespace PandemicSuppliesWebApp
         {
             RouteConfig.RegisterRoutes(RouteTable.Routes);  // enable friendly urls
         }
+        //protected void Application_Error(object sender, EventArgs e)
+        //{
+        //    Response.Redirect("error.aspx");
+        //}
     }
 }

@@ -1,41 +1,74 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UL/PagesMaster/Site1Checkout.master" AutoEventWireup="true" CodeBehind="checkoutPayment.aspx.cs" Inherits="PandemicSuppliesWebApp.UL.Pages.checkoutPayment" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <%-- following script exists here because it will not work if placed in scripts folder--%>
+    <%-- it forces the radiobuttons in each datarepeater to be 'unique' --%>
+    <%-- maybe i should have used a gridview, but since there is only 'sometimes' a unit number, i think this is the best way --%>
+    <%-- referenced from: https://weblogs.asp.net/joseguay/having-radiobuttons-on-a-repeater-or-datalist --%>
+    <script>
+        function SetUniqueRadioButton(nameregex, current) {
+            re = new RegExp(nameregex);
+            for (i = 0; i < document.forms[0].elements.length; i++) {
+                elm = document.forms[0].elements[i]
+                if (elm.type == 'radio') {
+                    if (re.test(elm.name)) {
+                        elm.checked = false;
+                    }
+                }
+            }
+            current.checked = true;
+        }
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <%-- Delivery Address --%>
-    <h3>Delivery Address</h3>
+
+    <h3>Mailing Address</h3>
     <div class="border_rounded checkout-wrapper">
-        <div class="checkout-address">
-            <asp:RadioButton runat="server" CssClass="margin-1" GroupName="deliveryAddress" Checked="true"/><asp:Label runat="server" 
-                Text="Spongebob Squarepants, 124 Conch Street, Bikini Bottom, 1999, Pacific Ocean"/>
-        </div>
-        <div class="checkout-address">
-            <asp:RadioButton runat="server" CssClass="margin-1" GroupName="deliveryAddress"/><asp:Label runat="server" 
-                Text="Patrick Star, 120 Conch Street, Bikini Bottom, 1999, Pacific Ocean"/>
-        </div>
-        <asp:LinkButton ID="LinkButton1" runat="server" Text="Add a new address" CssClass="margin-1" OnClick="btnAddDeliveryAddress_Click" CausesValidation="false"/>
-    </div>
-    <br />
-    <%-- Billing address --%>
+        <asp:Repeater runat="server" ID="repeaterMailingAddresses" OnItemDataBound="repeaterMailingAddresses_ItemDataBound">
+            <HeaderTemplate></HeaderTemplate>
+            <ItemTemplate>
+                <div class="checkout-address">
+                    <asp:RadioButton runat="server" ID="radioButton" CssClass="margin-1" GroupName="MailingAddresses"/>
+                    <%--unit no bound in codebehind--%>
+                    <asp:Label runat="server"><%#Eval("Name") %>, </asp:Label>
+                    <asp:Label runat="server" ID="lblUnitNo" Visible="false" />
+                    <asp:Label runat="server"><%#Eval("StreetNo")%>, <%#Eval("Street")%>, <%#Eval("Suburb")%>,  <%#Eval("PostCode")%>, <%#Eval("State")%></asp:Label>
+                    <%--this label is invisible - it is used to store an address id for retrieving later--%>
+                    <%--there might be a better way of doing this--%>
+                    <asp:Label runat="server" ID="lblAddressID" visible="false" Text='<%#Eval("MailingAddressID")%>'></asp:Label>
+                </div>
+                </ItemTemplate>
+            <FooterTemplate></FooterTemplate>
+        </asp:Repeater>
+    <asp:Button runat="server" ID="btnAddMailingAddress" Text="Add Address" CssClass="button" OnClick="btnAddMailingAddress_Click" CausesValidation="false" />  
+        </div> 
+    
+
     <h3>Billing address</h3>
     <div class="border_rounded checkout-wrapper">
-        <div class="checkout-address">
-            <asp:RadioButton ID="rbtnSameAsDelivery" runat="server" CssClass="margin-1" GroupName="billingAddress" Checked="true" /><asp:Label runat="server"
-                Text="Same as delivery address." />
-        </div>
-        <div class="checkout-address">
-            <asp:RadioButton runat="server" CssClass="margin-1" GroupName="billingAddress" />
-            <asp:Label runat="server" Text="Spongebob Squarepants, 124 Conch Street, Bikini Bottom, 1999, Pacific Ocean" />
-        </div>
-        <div class="checkout-address">
-            <asp:RadioButton runat="server" CssClass="margin-1" GroupName="billingAddress" />
-            <asp:Label runat="server" Text="Patrick Star, 120 Conch Street, Bikini Bottom, 1999, Pacific Ocean" />
-        </div>
-        <asp:LinkButton ID="btnAddAddress" runat="server" Text="Add a new address" CssClass="margin-1" OnClick="btnAddBillingAddress_Click" CausesValidation="false" />
+        <asp:Repeater runat="server" ID="repeaterBillingAddresses" OnItemDataBound="repeaterBillingAddresses_ItemDataBound">
+            <HeaderTemplate></HeaderTemplate>
+            <ItemTemplate>
+                <div class="checkout-address">
+                    <asp:RadioButton runat="server" ID="radioButton" CssClass="margin-1" GroupName="BillingAddresses"/>
+                    <%--unit no bound in codebehind--%>
+                    <asp:Label runat="server"><%#Eval("Name") %>, </asp:Label>
+                    <asp:Label runat="server" ID="lblUnitNo" Visible="false" />
+                    <asp:Label runat="server"><%#Eval("StreetNo")%>, <%#Eval("Street")%>, <%#Eval("Suburb")%>,  <%#Eval("PostCode")%>, <%#Eval("State")%></asp:Label>
+                    <%--this label is invisible - it is used to store an address id for retrieving later--%>
+                    <%--there might be a better way of doing this--%>
+                    <asp:Label runat="server" ID="lblAddressID" visible="false" Text='<%#Eval("BillingAddressID")%>'></asp:Label>
+                </div>
+                </ItemTemplate>
+            <FooterTemplate></FooterTemplate>
+        </asp:Repeater>
+        <asp:LinkButton runat="server" ID="lnkbtnAddBillingAddress" Text="Add Address" CssClass="button" OnClick="btnAddBillingAddress_Click" CausesValidation="false"/>
     </div>
+
     <br />
+    <br />
+
     <%-- Payment Method --%>
     <h3>Payment method</h3>
     <div class="border_rounded checkout-wrapper">
@@ -139,76 +172,57 @@
             </div>
         </div>
     </div>
+
     <br />
+
     <%-- Review Order --%>
     <h3>Review order and postage</h3>
-    <div class="border_rounded checkout-wrapper">
-        <div class="checkout-address">
-            <asp:RadioButton ID="rbtnExpressPostage" runat="server" CssClass="margin-1" GroupName="postage" Checked="true" />
-            <asp:Label runat="server" Text="Express Postage" />
-            <asp:Label runat="server" ID="lblExpressPrice" Text="$30.00" ForeColor="brown"/>
+    <br />
+    <%--ideally postage would be a database table--%> 
+    <asp:RadioButtonList runat="server" ID="rbtnPostageOptions">
+        <asp:ListItem Value="Express" Selected="True"> Express - $30</asp:ListItem>
+        <asp:ListItem Value="Regular"> Regular - $20</asp:ListItem>
+    </asp:RadioButtonList>
+    <br />
+    <div class="cart-header">
+        <div>
+            <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/cart.aspx" Text="Edit Cart"></asp:HyperLink>
         </div>
-        <div class="checkout-address">
-            <asp:RadioButton ID="rbtnStandardPostage" runat="server" CssClass="margin-1" GroupName="postage"/>
-            <asp:Label runat="server" Text="Standard Postage" />
-            <asp:Label runat="server" ID="Label2" Text="$20.00" ForeColor="brown"/>
+        <div style="margin-left: auto; align-self: end; color: grey;">
+            <asp:Label runat="server" Text="Price" />
         </div>
-        <div class="cart-wrapper">
-            <div runat="server" class="cart-item" id="divFirstProduct">
-                <hr class="hr-margin" />
-                <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/product.aspx">
-                    <asp:Image runat="server" ImageUrl="../IMG/riot_gas_mask.jpg" CssClass="cart-image" />
-                    <asp:Label ID="lblProductTitle" runat="server" Text="Pandemic Supplies Riot Gas Mask Military Grade" CssClass="product-heading cart-heading" />
-                </asp:HyperLink>
-                <div style="float: right">
-                    <asp:Label runat="server" Text="$299.99" CssClass="cart-price" />
-                </div>
-                <div class="cart-quantity-wrapper">
-                    <asp:Label runat="server" ID="lblQty" Text="Quantity: " />
-                    <asp:DropDownList ID="lstProductQty" runat="server">
-                        <asp:ListItem Selected="true">1</asp:ListItem>
-                        <asp:ListItem>2</asp:ListItem>
-                        <asp:ListItem>3</asp:ListItem>
-                        <asp:ListItem>4</asp:ListItem>
-                    </asp:DropDownList>
-                    <asp:LinkButton ID="btnRemove" runat="server" OnClick="btnRemove_Click" Text="Remove" />
-                </div>
-            </div>
-                <hr class="hr-margin" />
-            <div runat="server" class="cart-item">
-                <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/product.aspx">
-                    <asp:Image runat="server" ImageUrl="../IMG/pasta.jpg" CssClass="cart-image" />
-                    <asp:Label ID="Label1" runat="server" Text="Uncle Bob's Premium Pasta 500g" CssClass="product-heading cart-heading" />
-                </asp:HyperLink>
-                <div style="float: right">
-                    <asp:Label runat="server" Text="$10" CssClass="cart-price" />
-                </div>
-                <div class="cart-quantity-wrapper">
-                    <asp:Label runat="server" Text="Quantity: " />
-                    <asp:DropDownList runat="server">
-                        <asp:ListItem>1</asp:ListItem>
-                        <asp:ListItem Selected="true">2</asp:ListItem>
-                        <asp:ListItem>3</asp:ListItem>
-                        <asp:ListItem>4</asp:ListItem>
-                        <asp:ListItem>5</asp:ListItem>
-                        <asp:ListItem>6</asp:ListItem>
-                        <asp:ListItem>7</asp:ListItem>
-                    </asp:DropDownList>
-                    <asp:LinkButton runat="server" OnClick="btnRemove_Click" Text="Remove" />
-                </div>
-            </div>
-        </div>
-        <asp:Label runat="server" ID="lblCartTotalPrice" Text="$349.95" CssClass="cart-price"/>
-        <asp:Label runat="server" ID="lblCartTotal" Text="Total (3 Items) + Postage: " CssClass="cart-total"/>
-        <br />
     </div>
+    
+    <div runat="server" id="divCartWrapper" class="cart-wrapper">
+        <asp:ListView ID="listviewCartProducts" runat="server" OnItemDataBound="listviewCartProducts_ItemDataBound">
+            <ItemTemplate>
+                <div runat="server" class="cart-item">
+                    <hr class="hr-margin" />
+                    <asp:HyperLink runat="server" ID="linkProductPage">
+                        <asp:Image runat="server" ID="imgProductImage" CssClass="cart-image" />
+                        <asp:Label ID="lblProductTitle" runat="server" CssClass="product-heading cart-heading"><%#Eval("ProductName")%></asp:Label>
+                    </asp:HyperLink>
+                    <div style="float: right">
+                        <asp:Label runat="server" CssClass="cart-price">$<%#Eval("ProductPrice")%></asp:Label>
+                    </div>
+                    <div class="cart-quantity-wrapper">
+                        <%-- qty bound in codebehind--%>
+                        <asp:Label runat="server" Text="Qty: " />
+                        <asp:Label runat="server" ID="lblProductQty" />
+                    </div>
+                </div>
+                <%--<hr class="hr-margin" />--%>
+            </ItemTemplate>
+        </asp:ListView>
+        <hr class="hr-margin" />
+    </div>
+    <asp:Label runat="server" ID="lblCartTotalPrice" CssClass="cart-price"/>
+    <asp:Label runat="server" ID="lblCartTotal" CssClass="cart-total"/>
     <br />
     <asp:Label runat="server" ID="lblPaymentFeedback" Forecolor="Green" Visible="false"/>
-    <br />
-    <br />
-    <asp:LinkButton runat="server" ID="btnConfirm" Text="Confirm and pay" OnClick="btnConfirm_Click" CssClass="button cart-button" CausesValidation="true"/>
+    <asp:LinkButton runat="server" ID="btnConfirm" Text="Confirm and pay" OnClick="btnConfirm_Click" CssClass="button cart-button" CausesValidation="false"/>
     <asp:LinkButton runat="server" ID="btnCancel" Text="Cancel" CssClass="button button-cancel" CausesValidation="false" 
-            OnClick="btnCancel_Click" />
+            OnClick="btnCancel_Click"/>
     <br />
     <br />
     <br />

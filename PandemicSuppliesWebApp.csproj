@@ -91,10 +91,10 @@
     <Content Include="UL\Pages\Admin\adminAddProduct.aspx" />
     <Content Include="UL\Pages\Admin\adminDashboard.aspx" />
     <Content Include="UL\Pages\Admin\adminProducts.aspx" />
+    <Content Include="UL\Pages\checkoutAddAddress.aspx" />
     <Content Include="UL\Pages\contact.aspx" />
     <Content Include="UL\Pages\policy.aspx" />
     <Content Include="UL\Pages\cart.aspx" />
-    <Content Include="UL\Pages\checkoutAddBillingAddress.aspx" />
     <Content Include="UL\Pages\checkoutAddDeliveryAddress.aspx" />
     <Content Include="UL\Pages\checkoutConfirmation.aspx" />
     <Content Include="UL\Pages\checkoutPayment.aspx" />
@@ -117,13 +117,17 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="BL\BLAccountAddresses.cs" />
+    <Compile Include="BL\BLAccountInvoices.cs" />
+    <Compile Include="BL\BLAccountSettings.cs" />
     <Compile Include="BL\BLAdminAccounts.cs" />
     <Compile Include="BL\BLAdminAddProduct.cs" />
     <Compile Include="BL\BLAdminProducts.cs" />
     <Compile Include="BL\BLCart.cs" />
+    <Compile Include="BL\BLCheckout.cs" />
     <Compile Include="BL\BLLogin.cs" />
     <Compile Include="BL\BLProductDisplay.cs" />
     <Compile Include="BL\BLRegister.cs" />
+    <Compile Include="BL\BusinessLayerException.cs" />
     <Compile Include="BL\PaymentSystem\INFT3050PaymentFactory.cs" />
     <Compile Include="BL\PaymentSystem\INFT3050PaymentSystem.cs" />
     <Compile Include="BL\PaymentSystem\IPaymentSystem.cs" />
@@ -131,10 +135,13 @@
     <Compile Include="BL\User.cs" />
     <Compile Include="DAL\DALBillingAddressAccess.cs" />
     <Compile Include="DAL\DALCartAccess.cs" />
+    <Compile Include="DAL\DALInvoices.cs" />
     <Compile Include="DAL\DALLogin.cs" />
+    <Compile Include="DAL\DALMailingAddressAccess.cs" />
     <Compile Include="DAL\DALProductAccess.cs" />
     <Compile Include="DAL\DALRegister.cs" />
     <Compile Include="DAL\DALUserAccess.cs" />
+    <Compile Include="DAL\DataAccessLayerException.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -251,6 +258,13 @@
     <Compile Include="UL\Pages\Admin\adminProducts.aspx.designer.cs">
       <DependentUpon>adminProducts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UL\Pages\checkoutAddAddress.aspx.cs">
+      <DependentUpon>checkoutAddAddress.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UL\Pages\checkoutAddAddress.aspx.designer.cs">
+      <DependentUpon>checkoutAddAddress.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UL\Pages\contact.aspx.cs">
       <DependentUpon>contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -278,13 +292,6 @@
     </Compile>
     <Compile Include="UL\Pages\cart.aspx.designer.cs">
       <DependentUpon>cart.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UL\Pages\checkoutAddBillingAddress.aspx.cs">
-      <DependentUpon>checkoutAddBillingAddress.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UL\Pages\checkoutAddBillingAddress.aspx.designer.cs">
-      <DependentUpon>checkoutAddBillingAddress.aspx</DependentUpon>
     </Compile>
     <Compile Include="UL\Pages\checkoutAddDeliveryAddress.aspx.cs">
       <DependentUpon>checkoutAddDeliveryAddress.aspx</DependentUpon>

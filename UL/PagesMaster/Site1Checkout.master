@@ -10,7 +10,7 @@
         <asp:HyperLink ID="linkLogo" runat="server" NavigateUrl="~/UL/Pages/main.aspx" Text="Pandemic Supplies" CssClass="nav-link nav-logo" ForeColor="Black"/>
     </h1>
     <div class="margin-wrapper">
-        <h2>Checkout <asp:hyperlink runat="server" Text="3 Items" NavigateUrl="~/UL/Pages/cart.aspx"/></h2>
+        <h2>Checkout <asp:hyperlink runat="server" ID="linkCart" NavigateUrl="~/UL/Pages/cart.aspx"/></h2>
         <hr class="hr-margin"/>
         <asp:ContentPlaceHolder ID="body" runat="server">
         </asp:ContentPlaceHolder>

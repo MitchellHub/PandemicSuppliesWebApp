@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Web.UI.WebControls;
@@ -9,6 +10,12 @@ namespace PandemicSuppliesWebApp.UL.Pages.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Request.IsSecureConnection)
+            {
+                string url = ConfigurationManager.AppSettings["SecurePath"] + "adminProducts.aspx";
+                Response.Redirect(url);
+            }
+
             lblEditProductFeedback.Text = "";
             if (!IsPostBack)
             {

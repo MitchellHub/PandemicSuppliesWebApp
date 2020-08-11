@@ -23,5 +23,11 @@ namespace PandemicSuppliesWebApp.BL {
 
             DAL.DALUserAccess.updateUserIsActiveStatusInDatabase(intUserID, boolIsActive);
         }
+
+        public static DataTable dtbInvoices(int _intUserID)
+        {
+            int intUserID = _intUserID;
+            return DAL.DALInvoices.dtbSelectInvoices(intUserID);
+        }
     }
 }

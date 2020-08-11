@@ -38,8 +38,6 @@
                     <asp:HyperLink ID="linkOrders" runat="server" NavigateUrl="~/UL/Pages/orders.aspx" Text="Orders" /></li>
                 <li class="nav-link-list_item_button">
                     <asp:LinkButton ID="linkCart" runat="server" CssClass="nav-button" OnClick="linkCart_Click" CausesValidation="false">
-                        <%--PostBackUrl="~/UL/Pages/search.aspx">--%>
-                        <%-- Could use postback here, not sure which is better --%>
                         <span class="material-icons valign-middle">shopping_cart</span>
                         <asp:Label ID="lblCartStock" runat="server" Text="" CssClass="valign-middle"></asp:Label>
                     </asp:LinkButton>

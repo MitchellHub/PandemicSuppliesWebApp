@@ -16,5 +16,12 @@ namespace PandemicSuppliesWebApp.BL {
 
             return DAL.DALProductAccess.dtbSelectProducts(intProductID);
         }
+
+        public static DataTable dtbSelectItemsByName(string _strSearchTerm)
+        {
+            string strSearchTerm = _strSearchTerm.ToString();
+
+            return DAL.DALProductAccess.dtbSelectBySearchTerm(strSearchTerm);
+        }
     }
 }

@@ -9,32 +9,40 @@ namespace PandemicSuppliesWebApp.BL {
         public static void insertBillingAddress(int _intUserID, bool _boolIsDefault, string _strName, int _intUnitNo, 
             int _intStreetNo, string _strStreet, string _strSuburb, int _intPostCode, string _strState, int _intPhone)
         {
-            int intUserID = Convert.ToInt32(_intUserID);
-            bool boolIsDefault = Convert.ToBoolean(_boolIsDefault);
-            string strName = _strName.ToString();
-            int intUnitNo = Convert.ToInt32(_intUnitNo);
-            int intStreetNo = Convert.ToInt32(_intStreetNo);
-            string strStreet = _strStreet.ToString();
-            string strSuburb = _strSuburb.ToString();
-            int intPostCode = Convert.ToInt32(_intPostCode);
-            string strState = _strState.ToString();
-            int intPhone = Convert.ToInt32(_intPhone);
+            try
+            {
+                int intUserID = Convert.ToInt32(_intUserID);
+                bool boolIsDefault = Convert.ToBoolean(_boolIsDefault);
+                string strName = _strName.ToString();
+                int intUnitNo = Convert.ToInt32(_intUnitNo);
+                int intStreetNo = Convert.ToInt32(_intStreetNo);
+                string strStreet = _strStreet.ToString();
+                string strSuburb = _strSuburb.ToString();
+                int intPostCode = Convert.ToInt32(_intPostCode);
+                string strState = _strState.ToString();
+                int intPhone = Convert.ToInt32(_intPhone);
 
-            // set other addresses IsDefault = false if this address is destined to be the default address
-            if (boolIsDefault)
-                DAL.DALBillingAddressAccess.updateBillingAddressDefaults(intUserID);
+                // set other addresses IsDefault = false if this address is destined to be the default address
+                if (boolIsDefault)
+                    DAL.DALBillingAddressAccess.updateBillingAddressDefaults(intUserID);
 
-            DAL.DALBillingAddressAccess.InsertBillingAddress(
-                intUserID,
-                boolIsDefault,
-                strName, intUnitNo,
-                intStreetNo,
-                strStreet,
-                strSuburb,
-                intPostCode,
-                strState,
-                intPhone);
+                DAL.DALBillingAddressAccess.insertBillingAddress(
+                    intUserID,
+                    boolIsDefault,
+                    strName, intUnitNo,
+                    intStreetNo,
+                    strStreet,
+                    strSuburb,
+                    intPostCode,
+                    strState,
+                    intPhone);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
+
         public static DataTable dtbSelectBillingAddresses(int _intUserID)
         {
             int intUserID = Convert.ToInt32(_intUserID);
@@ -61,7 +69,54 @@ namespace PandemicSuppliesWebApp.BL {
         public static void insertMailingAddress(int _intUserID, bool _boolIsDefault, string _strName, int _intUnitNo,
             int _intStreetNo, string _strStreet, string _strSuburb, int _intPostCode, string _strState, int _intPhone)
         {
+            int intUserID = Convert.ToInt32(_intUserID);
+            bool boolIsDefault = Convert.ToBoolean(_boolIsDefault);
+            string strName = _strName.ToString();
+            int intUnitNo = Convert.ToInt32(_intUnitNo);
+            int intStreetNo = Convert.ToInt32(_intStreetNo);
+            string strStreet = _strStreet.ToString();
+            string strSuburb = _strSuburb.ToString();
+            int intPostCode = Convert.ToInt32(_intPostCode);
+            string strState = _strState.ToString();
+            int intPhone = Convert.ToInt32(_intPhone);
 
+            // set other addresses IsDefault = false if this address is destined to be the default address
+            if (boolIsDefault)
+                DAL.DALMailingAddressAccess.updateMailingAddressDefaults(intUserID);
+
+            DAL.DALMailingAddressAccess.insertMailingAddress(
+                intUserID,
+                boolIsDefault,
+                strName, intUnitNo,
+                intStreetNo,
+                strStreet,
+                strSuburb,
+                intPostCode,
+                strState,
+                intPhone);
+        }
+
+        public static DataTable dtbSelectMailingAddresses(int _intUserID)
+        {
+            int intUserID = Convert.ToInt32(_intUserID);
+
+            return DAL.DALMailingAddressAccess.dtbSelectMailingAddresses(intUserID);
+        }
+
+        public static void deactivateMailingAddress(int _intAddressID)
+        {
+            int intAddressID = Convert.ToInt32(_intAddressID);
+
+            DAL.DALMailingAddressAccess.updateMailingAddressIsActive(intAddressID, false);
+        }
+
+        public static void setDefaultMailingAddress(int _intUserID, int _intAddressID)
+        {
+            int intUserID = Convert.ToInt32(_intUserID);
+            int intAddressID = Convert.ToInt32(_intAddressID);
+
+            DAL.DALMailingAddressAccess.updateMailingAddressDefaults(intUserID);
+            DAL.DALMailingAddressAccess.updateMailingAddressIsDefault(intAddressID);
         }
     }
 }

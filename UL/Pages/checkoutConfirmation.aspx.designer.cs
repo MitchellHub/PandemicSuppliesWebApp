@@ -7,38 +7,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PandemicSuppliesWebApp.UL.Pages
-{
+namespace PandemicSuppliesWebApp.UL.Pages {
 
 
-    public partial class checkoutConfirmation
-    {
+    public partial class checkoutConfirmation {
 
         /// <summary>
-        /// divFirstProduct control.
+        /// divCartWrapper control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFirstProduct;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCartWrapper;
 
         /// <summary>
-        /// lblProductTitle control.
+        /// lvwInvoiceProducts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProductTitle;
+        protected global::System.Web.UI.WebControls.ListView lvwInvoiceProducts;
 
         /// <summary>
-        /// lblQty control.
+        /// lblTotalInvoiceCost control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblQty;
+        protected global::System.Web.UI.WebControls.Label lblTotalInvoiceCost;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.Policy;
 using System.Web;
@@ -12,7 +13,11 @@ namespace PandemicSuppliesWebApp.UL.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Request.IsSecureConnection)
+            {
+                string url = ConfigurationManager.AppSettings["SecurePath"] + "register.aspx";
+                Response.Redirect(url);
+            }
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)

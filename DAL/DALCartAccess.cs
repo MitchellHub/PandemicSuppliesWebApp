@@ -16,16 +16,23 @@ namespace PandemicSuppliesWebApp.DAL {
             SqlCommand cmdGetCartID = new SqlCommand("Carts_UspSelectCartID", conn);
             cmdGetCartID.CommandType = CommandType.StoredProcedure;
             cmdGetCartID.Parameters.Add(new SqlParameter("@UserID", _intUserID));
+            cmdGetCartID.Parameters.Add(new SqlParameter("@ReturnValue", SqlDbType.Int));
+            cmdGetCartID.Parameters["@ReturnValue"].Direction = ParameterDirection.Output;
 
             try
             {
                 conn.Open();
-                intCartID = (int)cmdGetCartID.ExecuteScalar();
+                cmdGetCartID.ExecuteNonQuery();
+                if (cmdGetCartID.Parameters["@ReturnValue"].Value != null)
+                    intCartID = (int)cmdGetCartID.Parameters["@ReturnValue"].Value;
+                else
+                    intCartID = -1;
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                System.Diagnostics.Debug.WriteLine("selectCartByUserIDException");
+                System.Diagnostics.Debug.WriteLine("no cart found");
+                return -1;
             }
             finally
             {
@@ -34,6 +41,7 @@ namespace PandemicSuppliesWebApp.DAL {
             System.Diagnostics.Debug.WriteLine("CartID: " + intCartID.ToString());
             return intCartID;
         }
+
         public static void insertProductIntoCart(int _intCartID, int _intProductID, int _intAmount)
             // method inserts a carts_products entry to carts_products
             // also updates respective carts entry 
@@ -210,6 +218,29 @@ namespace PandemicSuppliesWebApp.DAL {
                 Console.WriteLine(ex.ToString());
             }
             return dtbReturnTable;
+        }
+
+        public static void updateCartSold(int _intCartID)
+        {
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
+
+            var cmdUpdateIsActive = new SqlCommand("Carts_UspUpdateCartSold", conn);
+            cmdUpdateIsActive.CommandType = CommandType.StoredProcedure;
+            cmdUpdateIsActive.Parameters.Add(new SqlParameter("@CartID", _intCartID));
+
+            try
+            {
+                conn.Open();
+                cmdUpdateIsActive.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw new DataAccessLayerException();
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
     }
 }

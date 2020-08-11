@@ -7,12 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PandemicSuppliesWebApp.UL.PagesMaster
-{
+namespace PandemicSuppliesWebApp.UL.PagesMaster {
 
 
-    public partial class Site1Checkout
-    {
+    public partial class Site1Checkout {
 
         /// <summary>
         /// head control.
@@ -31,6 +29,15 @@ namespace PandemicSuppliesWebApp.UL.PagesMaster
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink linkLogo;
+
+        /// <summary>
+        /// linkCart control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink linkCart;
 
         /// <summary>
         /// body control.

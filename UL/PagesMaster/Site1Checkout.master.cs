@@ -13,6 +13,10 @@ namespace PandemicSuppliesWebApp.UL.PagesMaster
         {
             if (Session["User"] == null)
                 Response.Redirect("~/UL/Pages/login.aspx");
+
+            // set number of items in cart link
+            var usrSession = (BL.User)Session["User"];
+            linkCart.Text = (int)BL.BLCart.intCartTotalProducts(usrSession.UserID) + " Items";
         }
     }
 }

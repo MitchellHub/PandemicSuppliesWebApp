@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,18 +10,22 @@ namespace PandemicSuppliesWebApp.UL.Pages {
     public partial class accountAddressesAddAddress : System.Web.UI.Page {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!Request.IsSecureConnection)
+            {
+                string url = ConfigurationManager.AppSettings["SecurePath"] + "accountAddAddresses.aspx";
+                Response.Redirect(url);
+            }
         }
 
         protected void btnAddAddress_Click(object sender, EventArgs e)
         {
+            try
+            {
                 // get user session
                 var usrSession = (BL.User)Session["User"];
                 // get control values
                 string strName = tbxName.Text.ToString();
-                int intPhoneNo = 0;
-                if (tbxPhoneNumber.Text.ToString() != "")
-                    intPhoneNo = Convert.ToInt32(tbxPhoneNumber.Text);
+                int intPhoneNo = Convert.ToInt32(tbxPhoneNumber.Text);
 
                 int intUnitNo = 0;
                 if (tbxUnitNo.Text.ToString() != "")
@@ -39,20 +44,22 @@ namespace PandemicSuppliesWebApp.UL.Pages {
                     BL.BLAccountAddresses.insertBillingAddress(
                         Convert.ToInt32(usrSession.UserID),
                         boolIsDefault,
-                        strName, intUnitNo,
+                        strName, 
+                        intUnitNo,
                         intStreetNo,
                         strStreet,
                         strSuburb,
                         intPostCode,
                         strState,
                         intPhoneNo);
-                }
+                } 
                 else
                 {
                     BL.BLAccountAddresses.insertMailingAddress(
                         Convert.ToInt32(usrSession.UserID),
                         boolIsDefault,
-                        strName, intUnitNo,
+                        strName, 
+                        intUnitNo,
                         intStreetNo,
                         strStreet,
                         strSuburb,
@@ -60,8 +67,14 @@ namespace PandemicSuppliesWebApp.UL.Pages {
                         strState,
                         intPhoneNo);
                 }
-                Response.Redirect("accountAddresses.aspx");
-
+            }
+            catch
+            {
+                string url2 = ConfigurationManager.AppSettings["UnsecurePath"] + "error.aspx";
+                Response.Redirect(url2);
+            }
+            string url = ConfigurationManager.AppSettings["UnsecurePath"] + "accountAddresses.aspx";
+            Response.Redirect(url);
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)

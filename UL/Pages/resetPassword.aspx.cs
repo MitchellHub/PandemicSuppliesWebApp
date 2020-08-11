@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +12,11 @@ namespace PandemicSuppliesWebApp.UL.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Request.IsSecureConnection)
+            {
+                string url = ConfigurationManager.AppSettings["SecurePath"] + "resetPassword.aspx";
+                Response.Redirect(url);
+            }
         }
 
         protected void btnResetPassword_Click(object sender, EventArgs e)
@@ -20,7 +25,10 @@ namespace PandemicSuppliesWebApp.UL.Pages
             string strAEmail = Convert.ToString(tbxEmail.Text);
 
             if (strEmail == strAEmail)
-                Response.Redirect("resetPasswordConfirmation.aspx");
+            {
+                string url = ConfigurationManager.AppSettings["UnsecurePath"] + "resetPasswordConfirmation.aspx";
+                Response.Redirect(url);
+            }
             else
             {
                 lblFeedback.Text = "That email is not registered to an account";

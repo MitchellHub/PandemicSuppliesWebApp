@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <p><asp:Label ID="lblFeedback" runat="server" Text="Sorry, there was an error."></asp:Label></p>
+            <p><asp:Label ID="lblFeedback" runat="server" Text="Sorry, an error has occured."></asp:Label></p>
             <br />
             <br />
             <asp:HyperLink runat="server" Text="Click here to go back to main page" NavigateUrl="main.aspx" />

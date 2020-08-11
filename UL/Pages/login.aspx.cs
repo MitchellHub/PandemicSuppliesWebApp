@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,6 +13,12 @@ namespace PandemicSuppliesWebApp.UL.Pages
         protected void Page_Load(object sender, EventArgs e)
         {
             //Response.Write("<script>alert('login successful');</script>");
+            if (!Request.IsSecureConnection)
+            {
+                string url = ConfigurationManager.AppSettings["SecurePath"] + "login.aspx";
+                Response.Redirect(url);
+            }
+
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
@@ -41,15 +48,21 @@ namespace PandemicSuppliesWebApp.UL.Pages
                     Session["User"] = usrLogin;
                     if (usrLogin.IsAdmin == true)
                     {
-                        Response.Redirect("Admin/adminDashboard.aspx"); // if user is admin, redirect to dashboard
+                        string url = ConfigurationManager.AppSettings["SecurePath"] + "Admin/adminDashboard.aspx";
+                        Response.Redirect(url);
+                        //Response.Redirect("Admin/adminDashboard.aspx"); // if user is admin, redirect to dashboard
                     } 
                     else if (intProductID > 0)  // case for login page redirected from a product page
                     {
-                        Response.Redirect("product.aspx?ID=" + intProductID);
+                        string url = ConfigurationManager.AppSettings["UnsecurePath"] + "product.aspx?ID=" + intProductID;
+                        Response.Redirect(url);
+                        //Response.Redirect("product.aspx?ID=" + intProductID);
                     } 
                     else
                     {
-                        Response.Redirect("main.aspx"); // else go to main
+                        string url = ConfigurationManager.AppSettings["UnsecurePath"] + "main.aspx";
+                        Response.Redirect(url);
+                        //Response.Redirect("main.aspx"); // else go to main
                     }
                 } 
                 else if (usrLogin.UserID == 0)

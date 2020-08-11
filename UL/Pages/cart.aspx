@@ -41,7 +41,7 @@
     <asp:Label runat="server" ID="lblCartTotalPrice" CssClass="cart-price"/>
     <asp:Label runat="server" ID="lblCartTotal" CssClass="cart-total"/>
     <asp:LinkButton runat="server" ID="btnCheckout" Text="Checkout" OnClick="btnCheckout_Click" CssClass="button cart-button"/>
-
+    <asp:Label runat="server" ID="lblFeedback" CssClass="cart-total" Visible="false" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
 </asp:Content>

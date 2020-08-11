@@ -89,16 +89,8 @@
     <p><asp:Label ID="lblInvoiceGridViewFeedback" runat="server" Text=""></asp:Label></p>
     <br />
     <asp:GridView ID="gvInvoices" HeaderStyle-BackColor="#2d545e" HeaderStyle-ForeColor="White"
-        runat="server" AutoGenerateColumns="False" Visible="False" OnRowCommand="gvInvoices_RowCommand">
+        runat="server" AutoGenerateColumns="True" Visible="False">
         <Columns>
-            <asp:BoundField DataField="InvoiceID" HeaderText="InvoiceID" ItemStyle-Width="100" />
-            <asp:BoundField DataField="InvoiceDate" HeaderText="InvoiceDate" ItemStyle-Width="150" />
-            <asp:BoundField DataField="InvoiceTotal" HeaderText="InvoiceTotal" ItemStyle-Width="150" />
-            <asp:TemplateField>
-                <ItemTemplate>
-                    <asp:Button Text="View Items" runat="server" CommandName="ViewItems" CommandArgument="<%# Container.DataItemIndex %>" />
-                </ItemTemplate>
-            </asp:TemplateField>
         </Columns>
     </asp:GridView>
     <br />

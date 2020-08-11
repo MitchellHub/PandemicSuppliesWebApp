@@ -19,6 +19,8 @@ namespace PandemicSuppliesWebApp.UL.Pages
                 lblFeedback.Text = "Sorry, you were trying to access a page that you don't have permission for";
             if (strErrorID == "productunavailable")
                 lblFeedback.Text = "Sorry, the product you're trying to view is unavailable right now!";
+            if (strErrorID == "dataaccess")
+                lblFeedback.Text = "Sorry, there was a problem communicating with the database";
         }
     }
 }

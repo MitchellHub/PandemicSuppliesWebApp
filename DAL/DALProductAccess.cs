@@ -82,6 +82,32 @@ namespace PandemicSuppliesWebApp.DAL {
             }
         }
 
+        public static void updateProductStockLevelByAddition(int _intProductID, int _intStockLevelAddition)
+        {
+            int intProductID = Convert.ToInt32(_intProductID);
+            int intStockLevelAddition = Convert.ToInt32(_intStockLevelAddition);
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
+
+            var cmdUpdateStock = new SqlCommand("Products_UspUpdateStockByAddition", conn);
+            cmdUpdateStock.CommandType = CommandType.StoredProcedure;
+            cmdUpdateStock.Parameters.Add(new SqlParameter("@ProductID", intProductID));
+            cmdUpdateStock.Parameters.Add(new SqlParameter("@StockLevelAddition", intStockLevelAddition));
+
+            try
+            {
+                conn.Open();
+                cmdUpdateStock.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw new DataAccessLayerException();
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public static DataTable dtbSelectProducts(int _intSearchID)
         // method returns all products if searchID == 0, or returns product with matching ProductID
         {
@@ -203,6 +229,31 @@ namespace PandemicSuppliesWebApp.DAL {
                 conn.Close();
             }
             return bytImageArray;
+        }
+
+        public static DataTable dtbSelectBySearchTerm(string _strSearchTerm)
+        {
+            SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
+            DataTable dtbReturnTable = new DataTable();
+
+            var cmdSelectSearch = new SqlCommand("Products_UspSelectBySearchTerm", conn);
+            cmdSelectSearch.CommandType = CommandType.StoredProcedure;
+            cmdSelectSearch.Parameters.Add(new SqlParameter("@SearchTerm", _strSearchTerm));
+
+            try
+            {
+                conn.Open();
+
+                using (SqlDataAdapter da = new SqlDataAdapter(cmdSelectSearch))
+                {
+                    da.Fill(dtbReturnTable);
+                }
+            }
+            catch
+            {
+                throw new DataAccessLayerException();
+            }
+            return dtbReturnTable;
         }
     }
 }

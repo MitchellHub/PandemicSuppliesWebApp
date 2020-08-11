@@ -27,42 +27,6 @@
     </div>
     <br />
     <br />
-    <h3><asp:Label runat="server" Text="We also recommend these items " CssClass="product_page-heading" /></h3>
-
-    <div class="grid-wrapper_products">
-        <div class="grid-item-product">
-            <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/product.aspx" ForeColor="Black">
-                <div class="image-product-wrapper">
-                <asp:Image runat="server" ImageUrl="../IMG/hand_sanitizer.jpg" CssClass="image-product" />
-                    </div>
-                <p class="product-heading">Vlad's Double-Strength Hand Sanitizer 50ml</p>
-                <p class="product_price"><span class="product_price-sale_new">$25.00</span><span class="product_price-sale_old"> $50.00</span></p>
-                <p><span class="product-in_stock">In-Stock!</span></p>
-            </asp:HyperLink>
-        </div>
-
-        <div class="grid-item-product">
-            <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/product.aspx" ForeColor="Black">
-                <div class="image-product-wrapper">
-                <asp:Image runat="server" ImageUrl="../IMG/bottled_water.jpg" CssClass="image-product" />
-                    </div>
-                <p class="product-heading">Mountain Spring Water 1 litre Bottle</p>
-                <p class="product_price">$10.00</p>
-                <p><span class="product-in_stock">In-Stock!</span></p>
-            </asp:HyperLink>
-        </div>
-
-        <div class="grid-item-product">
-            <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/product.aspx" ForeColor="Black">
-                <div class="image-product-wrapper">
-                <asp:Image runat="server" ImageUrl="../IMG/bottled_water.jpg" CssClass="image-product" />
-                    </div>
-                <p class="product-heading">Mountain Spring Water 2 litre Bottle</p>
-                <p class="product_price">$15.00</p>
-                <p><span class="product-out_of_stock">Unavailable!</span></p>
-            </asp:HyperLink>
-        </div>
-    </div>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">

@@ -30,11 +30,12 @@ namespace PandemicSuppliesWebApp.DAL {
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
+                throw new DataAccessLayerException();
             }
             return dtbReturn;
         }
 
-        public static void InsertBillingAddress(int _intUserID, bool _boolIsDefault, string _strName, int _intUnitNo, int _intStreetNo, string _strStreet, string _strSuburb, int _intPostCode, string _strState, int _intPhone)
+        public static void insertBillingAddress(int _intUserID, bool _boolIsDefault, string _strName, int _intUnitNo, int _intStreetNo, string _strStreet, string _strSuburb, int _intPostCode, string _strState, int _intPhone)
         {
             SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
 
@@ -64,7 +65,7 @@ namespace PandemicSuppliesWebApp.DAL {
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
-                System.Diagnostics.Debug.WriteLine("DAL exception");
+                throw new DataAccessLayerException();
             }
         }
 

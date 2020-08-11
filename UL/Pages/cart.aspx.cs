@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Web;
@@ -12,19 +13,36 @@ namespace PandemicSuppliesWebApp.UL.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Request.IsSecureConnection)
+            {
+                string url = ConfigurationManager.AppSettings["SecurePath"] + "cart.aspx";
+                Response.Redirect(url);
+            }
             if (Session["User"] == null)
                 Response.Redirect("login.aspx");
             if (!IsPostBack)
             {
                 // get session
                 BL.User usrSession = (BL.User)Session["User"];
+
+                // check a cart exists, or a cart exists and has no items
+                if ((int)BL.BLCart.intSelectCartID(usrSession.UserID) <= 0 || (int)BL.BLCart.intCartTotalProducts(usrSession.UserID) <= 0)
+                {
+                    lblCartTotalPrice.Visible = false;
+                    lblCartTotal.Visible = false;
+                    btnCheckout.Visible = false;
+                    lblFeedback.Text = "No items in cart yet !";
+                    lblFeedback.Visible = true;
+                }
+
                 try
                 {
                     fillCartWithProducts(usrSession.UserID);
                 }
                 catch
                 {
-                    Response.Redirect("error.aspx?ID=servererror");
+                    string url = ConfigurationManager.AppSettings["UnsecurePath"] + "error.aspx";
+                    Response.Redirect(url);
                 }
             }
         }
@@ -75,7 +93,8 @@ namespace PandemicSuppliesWebApp.UL.Pages
                 }
                 catch
                 {
-                    Response.Redirect("error.aspx?ID=servererror");
+                    string url = ConfigurationManager.AppSettings["UnsecurePath"] + "error.aspx";
+                    Response.Redirect(url);
                 }
             }
         }
@@ -96,7 +115,8 @@ namespace PandemicSuppliesWebApp.UL.Pages
                 }
                 catch
                 {
-                    Response.Redirect("error.aspx?ID=servererror");
+                    string url = ConfigurationManager.AppSettings["UnsecurePath"] + "error.aspx?ID=servererror";
+                    Response.Redirect(url);
                 }
             }
         }
@@ -105,6 +125,10 @@ namespace PandemicSuppliesWebApp.UL.Pages
         {
             listviewCartProducts.DataSource = BL.BLCart.dtbSelectAllCartProducts(Convert.ToInt32(_intUserID));
             listviewCartProducts.DataBind();
+
+            // cart totals
+            lblCartTotal.Text = "Cart Subtotal (" + BL.BLCart.intCartTotalProducts(_intUserID) + " Items): ";
+            lblCartTotalPrice.Text = "$" + BL.BLCart.decCartTotalPrice(_intUserID).ToString();
         }
     }
 }
