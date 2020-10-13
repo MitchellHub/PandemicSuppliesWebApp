@@ -24,7 +24,6 @@ namespace PandemicSuppliesWebApp.UL.Pages
             }
             if (!IsPostBack)
             {
-
                 // get session
                 if (Session["User"] == null)
                     Response.Redirect("~/UL/Pages/login.aspx");
@@ -35,6 +34,12 @@ namespace PandemicSuppliesWebApp.UL.Pages
                 if (BL.BLCart.intSelectCartID(usrSession.UserID) <= 0)
                 {
                     string url = ConfigurationManager.AppSettings["UnsecurePath"] + "main.aspx";
+                    Response.Redirect(url);
+                }
+                // check the cart has items
+                if (!usrSession.CheckCartHasitems())
+                {
+                    string url = ConfigurationManager.AppSettings["UnsecurePath"] + "error.aspx?ID=privilegeerror";
                     Response.Redirect(url);
                 }
 
