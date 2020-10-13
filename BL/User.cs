@@ -12,6 +12,12 @@ namespace PandemicSuppliesWebApp.BL {
         public bool IsAdmin { get; set; }
         public bool IsActive { get; set; }
 
+
+        public bool CheckCartHasitems()
+        {
+            return BLCart.intCartTotalProducts(this.UserID) > 0;
+        }
+
         // DateTime CreateDate;
     }
 }

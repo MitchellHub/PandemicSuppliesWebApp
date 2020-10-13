@@ -114,7 +114,6 @@ namespace PandemicSuppliesWebApp.DAL {
         }
 
         public static void updateBillingAddressIsDefault(int _intAddressID)
-            // sets address to default
         {
             SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
 

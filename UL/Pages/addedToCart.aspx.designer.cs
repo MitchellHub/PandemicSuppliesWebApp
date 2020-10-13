@@ -7,10 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PandemicSuppliesWebApp.UL.Pages {
+namespace PandemicSuppliesWebApp.UL.Pages
+{
 
 
-    public partial class addedToCart {
+    public partial class addedToCart
+    {
 
         /// <summary>
         /// linkProductPage control.
@@ -92,5 +94,14 @@ namespace PandemicSuppliesWebApp.UL.Pages {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCheckOut;
+
+        /// <summary>
+        /// lblFeedback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblFeedback;
     }
 }

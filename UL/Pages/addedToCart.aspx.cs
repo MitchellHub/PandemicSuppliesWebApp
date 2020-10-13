@@ -44,7 +44,7 @@ namespace PandemicSuppliesWebApp.UL.Pages
                         {   
                             // if available, add to cart and fill html values
                             BL.BLCart.addProductToCart(usrSession.UserID, intProductID, 1);
-                            fillHtmlValues(drwProductData, usrSession.UserID);
+                            FillHtmlValues(drwProductData, usrSession.UserID);
                         }
                         else
                         {
@@ -72,9 +72,10 @@ namespace PandemicSuppliesWebApp.UL.Pages
 
         protected void btnCheckOut_Click(object sender, EventArgs e)
         {
-            Response.Redirect("checkoutPayment.aspx");
+            UserLayerHelper.RedirectToCheckout((BL.User)Session["User"], lblFeedback);
         }
-        private void fillHtmlValues(DataRow drwProductData, int _intUserID)
+
+        private void FillHtmlValues(DataRow drwProductData, int _intUserID)
         {
             // set nav url of image
             linkProductPage.NavigateUrl = "product.aspx?ID=" + drwProductData["ProductID"].ToString();

@@ -55,7 +55,7 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
     <footer>
-        <hr />
+        <%--<hr />
         <div class="grid footer-margin">
             <div style="text-align: center;">
                 <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/policy.aspx" Text="Privacy Policy" CssClass="no_decoration" />
@@ -66,7 +66,7 @@
             <div style="text-align: center;">
                 <asp:HyperLink runat="server" NavigateUrl="~/UL/Pages/about.aspx" Text="About Us" CssClass="no_decoration" />
             </div>
-        </div>
+        </div>--%>
         <%-- FOOTER CONTENT HERE --%>
         <asp:ContentPlaceHolder ID="footer" runat="server">
         </asp:ContentPlaceHolder>

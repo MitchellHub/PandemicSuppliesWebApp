@@ -49,10 +49,7 @@ namespace PandemicSuppliesWebApp.UL.Pages
 
         protected void btnCheckout_Click(object sender, EventArgs e)
         {
-            if (Session["User"] != null)
-                Response.Redirect("checkoutPayment.aspx");
-            else
-                Response.Redirect("login.aspx");
+            UserLayerHelper.RedirectToCheckout((BL.User) Session["User"], lblFeedback);
         }
 
         protected void listviewCartProducts_ItemDataBound(object sender, ListViewItemEventArgs e)

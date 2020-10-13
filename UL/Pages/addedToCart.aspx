@@ -25,6 +25,7 @@
             <asp:Button ID="btnCheckOut" runat="server" Text="Go to Checkout" CssClass="button added_to_cart-button" OnClick="btnCheckOut_Click" />
         </div>
     </div>
+    <asp:Label runat="server" ID="lblFeedback" CssClass="input-error_message" Visible="false" />
     <br />
     <br />
 </asp:Content>
