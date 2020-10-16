@@ -37,29 +37,29 @@ namespace PandemicSuppliesWebApp.UL.Pages
             }
         }
 
-        //protected void lvwInvoices_ItemDataBound(object sender, ListViewItemEventArgs e)
-        //{
-        //    if (e.Item.ItemType == ListViewItemType.DataItem)
-        //    {
-        //        try
-        //        {
-        //            // grab session userID
-        //            BL.User usrSession = (BL.User)Session["User"];
-        //            int intUserID = (int)usrSession.UserID;
-        //            // find row view
-        //            DataRowView rowView = (DataRowView)e.Item.DataItem;
+        protected void lvwInvoices_ItemDataBound(object sender, ListViewItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListViewItemType.DataItem)
+            {
+                try
+                {
+                    // grab session userID
+                    BL.User usrSession = (BL.User)Session["User"];
+                    int intUserID = (int)usrSession.UserID;
+                    // find row view
+                    DataRowView rowView = (DataRowView)e.Item.DataItem;
 
-        //            Label lblAddress = (Label)e.Item.FindControl("lblDeliveryAddress");
-        //            Label lblTotal = (Label)e.Item.FindControl("lblTotal");
+                    Label lblAddress = (Label)e.Item.FindControl("lblDeliveryAddress");
+                    Label lblTotal = (Label)e.Item.FindControl("lblTotal");
 
-        //            //lblAddress.Text = BL.BLAccountInvoices.selectMailingAddress((int)rowView["InvoiceID"]);
-        //        }
-        //        catch
-        //        {
-        //            string url = ConfigurationManager.AppSettings["UnsecurePath"] + "error.aspx";
-        //            Response.Redirect(url);
-        //        }
-        //    }
-        //}
+                    //lblAddress.Text = BL.BLAccountInvoices.dtbSelectMailingAddresses((int)rowView["InvoiceID"]);
+                }
+                catch
+                {
+                    string url = ConfigurationManager.AppSettings["UnsecurePath"] + "error.aspx";
+                    Response.Redirect(url);
+                }
+            }
+        }
     }
 }

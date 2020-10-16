@@ -2,9 +2,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-    <asp:HyperLink runat="server">
+    <%--<asp:HyperLink runat="server">
             <asp:Image runat="server" ImageUrl="~/UL/IMG/sale_banner.png" CssClass="image-banner" />
-    </asp:HyperLink>
+    </asp:HyperLink>--%>
     <div class="grid-wrapper_products">
         <asp:ListView ID="listviewProducts" runat="server" OnItemDataBound="listviewProducts_DataBound">
             <ItemTemplate>

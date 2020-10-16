@@ -16,7 +16,8 @@ namespace PandemicSuppliesWebApp.UL.Pages
         {
             if (!Request.IsSecureConnection)
             {
-                string url = ConfigurationManager.AppSettings["SecurePath"] + "addedToCart.aspx";
+                // request secure connection, with product ID (fixed bug where wrong product loaded from unsecure connection)
+                string url = ConfigurationManager.AppSettings["SecurePath"] + "addedToCart.aspx?ID=" + Request["ID"];
                 Response.Redirect(url);
             }
             if (!IsPostBack)
@@ -27,7 +28,7 @@ namespace PandemicSuppliesWebApp.UL.Pages
                 if (Session["User"] == null)
                 {
                     Response.Redirect("login.aspx?ID=" + Request["ID"].ToString());
-                } 
+                }
                 else
                 {
                     try

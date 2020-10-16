@@ -128,6 +128,7 @@
     <Compile Include="BL\BLProductDisplay.cs" />
     <Compile Include="BL\BLRegister.cs" />
     <Compile Include="BL\BusinessLayerException.cs" />
+    <Compile Include="BL\Invoice.cs" />
     <Compile Include="BL\PaymentSystem\INFT3050PaymentFactory.cs" />
     <Compile Include="BL\PaymentSystem\INFT3050PaymentSystem.cs" />
     <Compile Include="BL\PaymentSystem\IPaymentSystem.cs" />
