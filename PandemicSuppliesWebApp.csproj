@@ -136,6 +136,7 @@
     <Compile Include="BL\User.cs" />
     <Compile Include="DAL\DALBillingAddressAccess.cs" />
     <Compile Include="DAL\DALCartAccess.cs" />
+    <Compile Include="DAL\DALDatabaseConnection.cs" />
     <Compile Include="DAL\DALInvoices.cs" />
     <Compile Include="DAL\DALLogin.cs" />
     <Compile Include="DAL\DALMailingAddressAccess.cs" />

@@ -118,5 +118,12 @@ namespace PandemicSuppliesWebApp.BL {
             DAL.DALMailingAddressAccess.updateMailingAddressDefaults(intUserID);
             DAL.DALMailingAddressAccess.updateMailingAddressIsDefault(intAddressID);
         }
+
+        public static DataRow dtbSelectMailingAddress(int _intMailingAddressID)
+        {
+            int intMailingAddressID = Convert.ToInt32(_intMailingAddressID);
+
+            return DAL.DALMailingAddressAccess.dtbSelectMailingAddressByID(intMailingAddressID);
+        }
     }
 }

@@ -8,12 +8,12 @@
     <br />
 
     <div runat="server" id="divCartWrapper" class="cart-wrapper">
-        <asp:ListView ID="lvwInvoices" runat="server">
+        <asp:ListView ID="lvwInvoices" runat="server" OnItemDataBound="lvwInvoices_ItemDataBound">
             <ItemTemplate>
                 <div class="border_rounded padding-1">
                     <asp:Label runat="server" Text="Order # " ><%#Eval("InvoiceID")%></asp:Label><br />
                     <asp:Label runat="server" Text="Delivery Address: "></asp:Label><asp:Label runat="server" ID="lblDeliveryAddress" /><br />
-                    <asp:Label runat="server" Text="Total Cost: "> </asp:Label><asp:Label runat="server" ID="lblTotal" /><br />
+                    <asp:Label runat="server" Text="Total Cost: $"><%#Eval("InvoiceTotal")%></asp:Label><asp:Label runat="server" ID="lblTotal" /><br />
                 </div>
             </ItemTemplate>
         </asp:ListView>

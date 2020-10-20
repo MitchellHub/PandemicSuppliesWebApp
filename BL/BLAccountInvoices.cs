@@ -13,18 +13,31 @@ namespace PandemicSuppliesWebApp.BL {
             return DAL.DALInvoices.dtbSelectInvoices(intUserID);
         }
 
-        public static DataTable dtbSelectBillingAddresses(int _intUserID)
+        //public static DataTable dtbSelectBillingAddresses(int _intUserID)
+        //{
+        //    int intUserID = Convert.ToInt32(_intUserID);
+
+        //    return BL.BLAccountAddresses.dtbSelectBillingAddresses(intUserID);
+        //}
+
+        //public static DataTable dtbSelectBillingAddress(int _intBillingAddressID)
+        //{
+        //    int intBillingAddressID = Convert.ToInt32(_intBillingAddressID);
+
+        //    return BL.BLAccountAddresses.dtbSelectBillingAddressb(intBillingAddressID);
+        //}
+
+        //public static DataTable dtbSelectMailingAddresses(int _intUserID)
+        //{
+        //    int intUserID = Convert.ToInt32(_intUserID);
+
+        //    return BL.BLAccountAddresses.dtbSelectMailingAddresses(_intUserID);
+        //}
+
+        public static DataRow dtbSelectMailingAddress(int _intMailingAddressID)
         {
-            int intUserID = Convert.ToInt32(_intUserID);
-
-            return BL.BLAccountAddresses.dtbSelectBillingAddresses(_intUserID);
-        }
-
-        public static DataTable dtbSelectMailingAddresses(int _intUserID)
-        {
-            int intUserID = Convert.ToInt32(_intUserID);
-
-            return BL.BLAccountAddresses.dtbSelectMailingAddresses(_intUserID);
+            // bounce off AccountAddresses method
+            return BL.BLAccountAddresses.dtbSelectMailingAddress(_intMailingAddressID);
         }
     }
 }

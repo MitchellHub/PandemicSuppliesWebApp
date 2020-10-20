@@ -50,9 +50,16 @@ namespace PandemicSuppliesWebApp.UL.Pages
                     DataRowView rowView = (DataRowView)e.Item.DataItem;
 
                     Label lblAddress = (Label)e.Item.FindControl("lblDeliveryAddress");
-                    Label lblTotal = (Label)e.Item.FindControl("lblTotal");
+                    //Label lblTotal = (Label)e.Item.FindControl("lblTotal");
 
-                    //lblAddress.Text = BL.BLAccountInvoices.dtbSelectMailingAddresses((int)rowView["InvoiceID"]);
+                    DataRow drwAddress = BL.BLAccountInvoices.dtbSelectMailingAddress((int)rowView["MailingAddressID"]);
+                    lblAddress.Text =
+                        drwAddress.Field<string>("StreetNo") + " " +
+                        drwAddress.Field<string>("Street") + ", " +
+                        drwAddress.Field<string>("Suburb") + ", " +
+                        drwAddress.Field<string>("PostCode") + ", " +
+                        drwAddress.Field<string>("State");
+
                 }
                 catch
                 {

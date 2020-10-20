@@ -33,6 +33,31 @@ namespace PandemicSuppliesWebApp.DAL {
             return dtbReturn;
         }
 
+        public static DataRow dtbSelectMailingAddressByID(int _intMailingAddressID)
+        // method returns datarow of all mailingaddresses by mailingaddressID
+        {
+            var dtbReturn = new DataTable();
+            SqlConnection conn = DALDatabaseConnection.INFT3050Connection();
+            DataTable dtbReturnTable = new DataTable();
+
+            string sqlSelect = $"SELECT * FROM dbo.MailingAddresses WHERE MailingAddressID = '{ _intMailingAddressID }'";
+            SqlCommand cmdSelectAddress = new SqlCommand(sqlSelect, conn);
+
+            try
+            {
+                conn.Open();
+                using (SqlDataAdapter da = new SqlDataAdapter(cmdSelectAddress))
+                {
+                    da.Fill(dtbReturnTable);
+                }
+            }
+            catch
+            {
+                throw new DataAccessLayerException();
+            }
+            return dtbReturnTable.Rows[0];
+        }
+
         public static void insertMailingAddress(int _intUserID, bool _boolIsDefault, string _strName, int _intUnitNo, int _intStreetNo, string _strStreet, string _strSuburb, int _intPostCode, string _strState, int _intPhone)
         {
             SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["INFT3050ConnectionString"].ConnectionString);
